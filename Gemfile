@@ -1,5 +1,14 @@
 source 'http://rubygems.org'
 
+if File.exists?("Gemfile.local")
+  begin
+    contents  = File.read("Gemfile.local")
+    eval(contents)
+  rescue Exception => e
+    puts "Exception = #{e.inspect}"
+  end
+end
+
 gem 'rails', '3.0.3'
 
 # Bundle edge Rails instead:
@@ -29,6 +38,18 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
-gem "k3_core"
+
+def find_gem(name, *args)
+  options = Hash === args.last ? args.pop : {}
+  version = args || [">= 0"]
+  dep = Dependency.new(name, version, options)
+  @dependencies.find { |d| d.name == dep.name }
+end
+
+unless find_gem("k3_core")
+  gem "k3_core"
+  gem "k3_pages"
+end
+gem 'cells'
 gem "rspec-rails", :group => :test
 gem "mysql2"
