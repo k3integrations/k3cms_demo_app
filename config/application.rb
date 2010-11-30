@@ -8,9 +8,6 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module FrameworkDemo
   class Application < Rails::Application
-    require Rails.root + 'lib/response_timer'
-    config.middleware.use "ResponseTimer"
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
