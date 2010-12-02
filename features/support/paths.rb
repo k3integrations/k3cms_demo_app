@@ -10,8 +10,11 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /the new custom_routing page/
-      new_custom_routing_path
+    when /the new page page/
+      new_page_path
+
+    when /the new page page/
+      new_page_path
 
 
     # Add more mappings here.
