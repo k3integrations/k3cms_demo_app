@@ -48,6 +48,20 @@ unless find_gem("k3_core")
   gem "k3_core"
   gem "k3_pages"
 end
-gem 'cells'
-gem "rspec-rails", :group => :test
+
 gem "mysql2"
+gem 'cells'
+
+group :test do
+  gem "rspec-rails"
+end
+
+group :cucumber do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'launchy'    # So you can do Then show me the page
+end  
