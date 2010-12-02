@@ -146,7 +146,7 @@ Then /^(?:|I )should not see \/([^\/]*)\/(?: within "([^"]*)")?$/ do |regexp, se
   end
 end
 
-Then /^the "([^"]*)" field(?: within "([^"]*)")? should contain "([^"]*)"$/ do |field, selector, value|
+Then /^the "([^"]*)" +field(?: within "([^"]*)")? should contain "([^"]*)"$/ do |field, selector, value|
   with_scope(selector) do
     field = find_field(field)
     field_value = (field.tag_name == 'textarea') ? field.text : field.value
