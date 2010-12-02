@@ -1,11 +1,18 @@
 Feature: Manage pages
-  In order to [goal]
-  [stakeholder]
-  wants [behaviour]
   
-  Scenario: Register new page
+  Scenario: Attempt to new page but fail validation
     Given I am on the new page page
     And I press "Create"
+    Then I should be on the pages page
+    Then I should see "Title can't be blank"
+
+  Scenario: Create new page
+    Given I am on the new page page
+    And I fill in "Title" with "About us"
+    And I press "Create"
+    Then I should be on the page page for "About us"
+    #Then print current_url
+    #Then show me the page
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).

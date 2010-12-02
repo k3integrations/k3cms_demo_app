@@ -201,6 +201,17 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
   end
 end
 
+Then /^print (.*)$/ do |expr|
+  puts current_url
+end
+Then /^inspect (.*)$/ do |expr|
+  puts eval(expr).inspect
+end
+Then /^pretty_inspect (.*)$/ do |expr|
+  require 'pp'
+  puts eval(expr).pretty_inspect
+end
+
 Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
   query = URI.parse(current_url).query
   actual_params = query ? CGI.parse(query) : {}

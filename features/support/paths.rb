@@ -16,10 +16,9 @@ module NavigationHelpers
     when /the new page page/
       new_page_path
 
+    when /^the page page for "(.*)"$/i
+      page_path(K3::Pages::Page.where(:title => $1).first)
 
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
