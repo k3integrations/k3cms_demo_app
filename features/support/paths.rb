@@ -25,9 +25,14 @@ module NavigationHelpers
 
     else
       begin
-        page_name =~ /the (.*) page/
-        path_components = $1.split(/\s+/)
-        self.send(path_components.push('path').join('_').to_sym)
+        if page_name =~ /the (.*) page/
+          path_components = $1.split(/\s+/)
+          self.send(path_components.push('path').join('_').to_sym)
+        elsif page_name =~ /"(.*)"/
+          $1
+        else
+          raise "Unknown format"
+        end
       rescue Object => e
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
           "Now, go and add a mapping in #{__FILE__}"
