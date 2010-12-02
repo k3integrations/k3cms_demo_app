@@ -1,3 +1,10 @@
+Given /^the following pages \(skipping validations\):$/ do |pages|
+  pages.hashes.each do |hash|
+    record = K3::Pages::Page.new(hash)
+    record.save(:validate => false)
+  end
+end
+
 Given /^the following pages:$/ do |pages|
   K3::Pages::Page.create!(pages.hashes)
 end

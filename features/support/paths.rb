@@ -17,7 +17,9 @@ module NavigationHelpers
       new_page_path
 
     when /^the page page for "(.*)"$/i
-      page_path(K3::Pages::Page.where(:title => $1).first)
+      page_path(
+        K3::Pages::Page.where(:title => $1).first || raise(ActiveRecord::RecordNotFound)
+      )
 
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
