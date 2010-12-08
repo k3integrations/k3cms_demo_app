@@ -44,9 +44,11 @@ def find_gem(name, *args)
   @dependencies.find { |d| d.name == dep.name }
 end
 
+# Avoid conflicts with gems specified in Gemfile.local
 unless find_gem("k3_core")
   gem "k3_core"
   gem "k3_pages"
+  gem "k3_ribbon"
 end
 
 gem "mysql2"
