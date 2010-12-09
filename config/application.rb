@@ -40,7 +40,8 @@ module FrameworkDemo
     config.filter_parameters += [:password]
 
     config.generators do |g|
-      g.test_framework :rspec
+      g.template_engine :haml
+      g.test_framework :rspec, :views => false, :helpers => false
     end
   end
 end

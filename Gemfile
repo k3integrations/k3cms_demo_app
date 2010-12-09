@@ -51,8 +51,10 @@ unless find_gem("k3_core")
   gem "k3_ribbon"
 end
 
-gem "mysql2"
+gem 'mysql2'
 gem 'cells'
+gem 'haml'
+gem 'haml-rails'
 
 group :test do
   gem "rspec-rails"
