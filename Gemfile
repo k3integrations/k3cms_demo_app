@@ -49,6 +49,7 @@ unless find_gem("k3_core")
   gem "k3_core"
   gem "k3_pages"
   gem "k3_ribbon"
+  gem "k3_inline_editor"
 end
 
 gem 'mysql2'
