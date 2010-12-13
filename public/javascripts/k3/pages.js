@@ -1,0 +1,1 @@
+../../../../../k3_pages/public/javascripts/k3/pages.js
