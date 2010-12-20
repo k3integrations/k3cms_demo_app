@@ -1,1 +1,1 @@
-../../../../k3_inline_editor/inline_editor/core/inline_editor.js
+../../../k3_inline_editor/inline_editor/core/inline_editor.js

@@ -1,1 +1,1 @@
-../../../../k3_inline_editor/public/javascripts/jquery.rest_in_place.js
+../../../k3_inline_editor/public/javascripts/jquery.rest_in_place.js
