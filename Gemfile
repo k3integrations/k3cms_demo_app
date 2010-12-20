@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 if File.exists?("Gemfile.local")
   begin
     contents  = File.read("Gemfile.local")
-    eval(contents)
+    eval(contents, binding, __FILE__, __LINE__)
   rescue Exception => e
     puts "Exception = #{e.inspect}"
   end
@@ -46,6 +46,7 @@ end
 
 # Avoid conflicts with gems specified in Gemfile.local
 unless find_gem("k3_core")
+  #puts "Gemfile.local did not load k3_core. Loading gems the default way..."
   gem "k3_core"
   gem "k3_pages"
   gem "k3_ribbon"

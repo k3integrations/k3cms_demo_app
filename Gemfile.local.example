@@ -1,5 +1,8 @@
-gem "k3_core",          :path => '/home/tyler/dev/framework/k3_core'
-gem "k3_pages",         :path => '/home/tyler/dev/framework/k3_pages'
-gem "k3_ribbon",        :path => '/home/tyler/dev/framework/k3_ribbon'
-gem "k3_inline_editor", :path => '/home/tyler/dev/framework/k3_inline_editor'
+require 'pathname'
+superproject_root = Pathname.new(__FILE__).dirname.parent
+
+gem "k3_core",          :path => superproject_root + 'k3_core'
+gem "k3_pages",         :path => superproject_root + 'k3_pages'
+gem "k3_ribbon",        :path => superproject_root + 'k3_ribbon'
+gem "k3_inline_editor", :path => superproject_root + 'k3_inline_editor'
 
