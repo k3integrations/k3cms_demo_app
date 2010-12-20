@@ -7,7 +7,7 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <%= render_cell 'k3/ribbon', :show %>
+  <%= render_cell 'k3/ribbon', :show, :current_page => @page %>
 
   <%= yield %>
 </body>
