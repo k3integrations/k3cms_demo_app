@@ -15,6 +15,6 @@ It also includes some integration tests / cucumber features. Perhaps these shoul
 7.  Make the User include K3::Authorization::RealUser module
 8.  Add framework initializer
 
-PROBLEM:  Missing root route.  Pages works fine because it must.  Devise has issues.  So must override ApplicationController#after_sign_in_path_for and ApplicationController#after_sign_out_path_for
+PROBLEM:  Missing root route.  Pages works fine because of the .  Devise has issues.  So must override ApplicationController#after_sign_in_path_for and ApplicationController#after_sign_out_path_for
   But this doesn't seem to be working yet.
 
