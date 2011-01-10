@@ -46,4 +46,7 @@ FrameworkDemo::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # Set default url options, needed for devise
+  config.action_mailer.default_url_options = { :host => 'http://set-me-in-the-environment.com/' }
 end
