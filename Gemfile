@@ -9,6 +9,22 @@ if File.exists?("Gemfile.local")
   end
 end
 
+def find_gem(name, *args)
+  options = Hash === args.last ? args.pop : {}
+  version = args || [">= 0"]
+  dep = Dependency.new(name, version, options)
+  @dependencies.find { |d| d.name == dep.name }
+end
+
+# Avoid conflicts with gems specified in Gemfile.local
+unless find_gem("k3_core")
+  #puts "Gemfile.local did not load k3_core. Loading gems the default way..."
+  gem "k3_core"
+  gem "k3_pages"
+  gem "k3_ribbon"
+  gem "k3_inline_editor"
+end
+
 gem 'rails', '3.0.3'
 
 # Bundle edge Rails instead:
@@ -36,22 +52,6 @@ gem 'ruby-debug19'
 # group :development, :test do
 #   gem 'webrat'
 # end
-
-def find_gem(name, *args)
-  options = Hash === args.last ? args.pop : {}
-  version = args || [">= 0"]
-  dep = Dependency.new(name, version, options)
-  @dependencies.find { |d| d.name == dep.name }
-end
-
-# Avoid conflicts with gems specified in Gemfile.local
-unless find_gem("k3_core")
-  #puts "Gemfile.local did not load k3_core. Loading gems the default way..."
-  gem "k3_core"
-  gem "k3_pages"
-  gem "k3_ribbon"
-  gem "k3_inline_editor"
-end
 
 gem 'mysql2'
 gem 'cells'
