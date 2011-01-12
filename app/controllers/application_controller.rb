@@ -4,4 +4,7 @@ class ApplicationController < ActionController::Base
   # TODO: We should not have to list them all individually
   helper 'k3/ribbon/ribbon'
 
+  def root_url
+    '/'
+  end
 end
