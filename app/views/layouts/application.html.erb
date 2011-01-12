@@ -7,7 +7,24 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <%= render_cell 'k3/ribbon', :show, :current_page => @page %>
+    
+    <% if user_signed_in? -%>
+      <% add_to_ribbon do %>
+        <li class="logged_in_as">
+          Logged in as: <%= k3_user.email %>
+        </li>
+        <li>
+          <%= link_to 'Sign out', destroy_user_session_path %>
+        </li>
+      <% end -%>
+    <% else %>
+      <ul>
+      <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      <li><%= link_to 'Sign in', new_user_session_path %></li>
+      </ul>
+    <% end -%>
+
+    <%= render_cell 'k3/ribbon', :show, :current_page => @page, :k3_ribbon_items => @k3_ribbon_items %>
     
     <% if flash[:notice] %>
       <p class="notice"><%= flash[:notice] %></p>
@@ -15,7 +32,7 @@
     <% if flash[:error] %>
       <p class="error"><%= flash[:error] %></p>
     <% end %>
-    
+
     <%= yield %>
   </body>
 </html>
