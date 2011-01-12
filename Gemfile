@@ -57,7 +57,7 @@ gem 'mysql2'
 gem 'cells'
 gem 'haml'
 gem 'haml-rails'
-gem 'devise'
+gem 'devise' unless find_gem('devise')
 
 group :test do
   gem "rspec-rails"
