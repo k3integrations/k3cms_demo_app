@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+k3_gems = %w[k3_core k3_pages k3_ribbon k3_inline_editor k3_trivial_authorization k3_authorization k3_cancan]
+
 if File.exists?("Gemfile.local")
   begin
     contents  = File.read("Gemfile.local")
@@ -16,13 +18,11 @@ def find_gem(name, *args)
   @dependencies.find { |d| d.name == dep.name }
 end
 
-# Avoid conflicts with gems specified in Gemfile.local
-unless find_gem("k3_core")
-  #puts "Gemfile.local did not load k3_core. Loading gems the default way..."
-  gem "k3_core"
-  gem "k3_pages"
-  gem "k3_ribbon"
-  gem "k3_inline_editor"
+k3_gems.each do |gem_name|
+  # Avoid conflicts with gems specified in Gemfile.local
+  unless find_gem(gem_name)
+    gem gem_name
+  end
 end
 
 gem 'rails', '3.0.3'

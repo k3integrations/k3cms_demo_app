@@ -1,6 +1,6 @@
 require 'pathname'
 superproject_root = Pathname.new(__FILE__).dirname.parent
 
-%w[k3_core k3_pages k3_ribbon k3_inline_editor k3_trivial_authorization k3_authorization k3_cancan].each do |gem_name|
-  gem gem_name, :path => superproject_root
+k3_gems.each do |gem_name|
+  gem gem_name, :path => superproject_root + gem_name
 end
