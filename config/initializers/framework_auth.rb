@@ -8,8 +8,10 @@ module ActionDispatch::Routing
       Cell::Base.send :include, Devise::Controllers::Helpers
       Cell::Base.send :include, K3::Authorization::Drivers::Devise
       Cell::Base.send :include, K3::Authorization::GeneralControllerMethods
+      Cell::Base.send :include, CanCan::ControllerAdditions
       ApplicationController.send :include, K3::Authorization::Drivers::Devise
       ApplicationController.send :include, K3::Authorization::GeneralControllerMethods
+      ApplicationController.send :include, CanCan::ControllerAdditions
     end
     alias_method_chain :finalize!, :my_app
   end
