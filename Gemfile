@@ -1,6 +1,15 @@
 source 'http://rubygems.org'
 
-k3_gems = %w[k3_core k3_pages k3_ribbon k3_inline_editor k3_trivial_authorization k3_authorization k3_cancan]
+k3_gems = %w[
+  k3_core
+  k3_pages 
+  k3_ribbon 
+  k3_inline_editor 
+  k3_trivial_authorization 
+  k3_authorization 
+  k3_cancan
+  k3_blog
+]
 
 if File.exists?("Gemfile.local")
   begin
@@ -54,7 +63,8 @@ gem 'ruby-debug19'
 # end
 
 gem 'mysql2'
-gem 'cells'
+# Depending on this fork in order to be able to use outer_content_for in k3_ribbon
+gem 'cells', :git => 'git://github.com/TylerRick/cells.git'
 gem 'haml'
 gem 'haml-rails'
 gem 'devise' unless find_gem('devise')

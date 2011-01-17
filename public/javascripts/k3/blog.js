@@ -1,0 +1,1 @@
+../../../../k3_blog/public/javascripts/k3/blog.js
