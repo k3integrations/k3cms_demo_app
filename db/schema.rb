@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(:version => 20110113174545) do
 
-  create_table "k3_blog_posts", :force => true do |t|
+  create_table "k3_blog_blog_posts", :force => true do |t|
     t.string   "title"
     t.string   "url"
     t.text     "summary"

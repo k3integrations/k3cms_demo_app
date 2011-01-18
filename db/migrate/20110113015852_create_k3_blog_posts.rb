@@ -1,6 +1,6 @@
 class CreateK3BlogPosts < ActiveRecord::Migration
   def self.up
-    create_table 'k3_blog_posts' do |t|
+    create_table 'k3_blog_blog_posts' do |t|
       t.string   'title'
       t.string   'url'
       t.text     'summary'
@@ -12,6 +12,6 @@ class CreateK3BlogPosts < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table 'k3_blog_posts'
+    drop_table 'k3_blog_blog_posts'
   end
 end
