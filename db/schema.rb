@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110113174545) do
+ActiveRecord::Schema.define(:version => 20110118023300) do
 
   create_table "k3_blog_blog_posts", :force => true do |t|
     t.string   "title"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(:version => 20110113174545) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_slug"
   end
+
+  add_index "k3_blog_blog_posts", ["cached_slug"], :name => "index_k3_blog_blog_posts_on_cached_slug", :unique => true
 
   create_table "k3_pages", :force => true do |t|
     t.string   "title"
@@ -31,6 +34,18 @@ ActiveRecord::Schema.define(:version => 20110113174545) do
     t.datetime "updated_at"
     t.integer  "author_id"
   end
+
+  create_table "slugs", :force => true do |t|
+    t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
+  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name",                          :default => "", :null => false
