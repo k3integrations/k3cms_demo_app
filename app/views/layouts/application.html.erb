@@ -7,10 +7,11 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
+    <%= render :file => 'k3/pages/init.html.haml' %>
     
     <% if user_signed_in? -%>
       <%# TODO: Should this part be moved out to k3_authentication or similar gem? %>
-      <% add_to_ribbon do %>
+      <% k3_ribbon_add_item do %>
         <li class="logged_in_as">
           Logged in as: <%= k3_user.email %>
         </li>
@@ -25,7 +26,7 @@
       </ul>
     <% end -%>
 
-    <%= render_cell 'k3/ribbon', :show, :current_page => @page, :k3_ribbon_items => @k3_ribbon_items %>
+    <%= k3_ribbon %>
     
     <% if flash[:notice] %>
       <p class="notice"><%= notice %></p>
