@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110118023300) do
+ActiveRecord::Schema.define(:version => 20110120172201) do
 
   create_table "k3_blog_blog_posts", :force => true do |t|
     t.string   "title"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20110118023300) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
+    t.text     "meta_description"
+    t.text     "meta_keywords"
   end
 
   create_table "slugs", :force => true do |t|
