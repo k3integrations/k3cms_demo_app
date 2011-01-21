@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title><%= content_for :title %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="<%= content_for :meta_description %>" />
     <meta name="keywords"    content="<%= content_for :meta_keywords %>" />
     <%= stylesheet_link_tag :all, :recursive => true %>
+    <%= stylesheet_link_tag '/themes/daleri-sweet/styles.css' %>
     <%= javascript_include_tag :defaults, :k3 %>
     <%= csrf_meta_tag %>
   </head>
+
   <body>
     <%= render :file => 'k3/pages/init.html.haml' %>
-    
     <% if user_signed_in? -%>
       <%# TODO: Should this part be moved out to k3_authentication or similar gem? %>
       <% k3_ribbon_add_item do %>
@@ -27,17 +29,230 @@
       <li><%= link_to 'Sign in', new_user_session_path %></li>
       </ul>
     <% end -%>
-
     <%= k3_ribbon %>
-    
-    <% if flash[:notice] %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if flash[:error] %>
-      <p class="error"><%= flash[:error] %></p>
-    <% end %>
 
-    <%= yield %>
+    <div id="bodyinner">
+      <div id="sitewidth">
+
+        <div id="top">
+          <div id="topleft">
+            <h1><%= link_to content_for(:title), '/' %></h1>
+            <% if content_for?(:subtitle) %>
+              <p><strong><%= content_for :subtitle %></strong></p>
+            <% end %>
+          </div>
+          <div id="topright">
+
+          </div>
+
+        </div><!-- #top-->
+
+        <div id="wrap">
+          <div id="content">
+            <% if flash[:notice] %>
+              <p class="notice"><%= notice %></p>
+            <% end %>
+            <% if flash[:error] %>
+              <p class="error"><%= flash[:error] %></p>
+            <% end %>
+
+            <%= yield %>
+
+            <div class="post">
+              <h2><a href="http://wordpressthemesbase.com/wp/this-is-a-sample-post/" title="This is a Sample Post">This is a Sample Post</a></h2>
+              <p class="timestamp"><strong>10 March, 2009 (12:18) | <a href="http://wordpressthemesbase.com/wp/category/category-1/" title="View all posts in Category 1" rel="category tag">Category 1</a> | By: admin</strong></p>
+
+              <div class="contenttext">
+                <p>This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p>
+                <p class="entrybody">&nbsp;<img class="alignnone size-full wp-image-9" title="infiniti" src="./daleri-sweet_files/infiniti.jpg" alt="infiniti" width="400" height="266"></p>
+                <p>This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p>
+                <p>This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p>
+                <p>Blockquote:</p>
+                <blockquote><p>This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p>
+                </blockquote>
+                <p>Ordered List:</p>
+                <ol>
+                  <li>Unordered list item #1</li>
+                  <li>Unordered list item #2</li>
+                  <li>Unordered list item #3</li>
+                </ol>
+                <p>Unordered List:</p>
+                <ul>
+                  <li>Unordered list item #1</li>
+                  <li>Unordered list item #2</li>
+                  <li>Unordered list item #3</li>
+                </ul>
+                </p></div>
+                <p class="postmeta"><a href="http://wordpressthemesbase.com/wp/this-is-a-sample-post/#respond" title="Comment on This is a Sample Post">Comments: -</a></p>
+              </div>
+
+
+              <div class="post">
+                <h2><a href="http://wordpressthemesbase.com/wp/a-post-with-an-ordered-list/" title="A Post with an Ordered List">A Post with an Ordered List</a></h2>
+                <p class="timestamp"><strong>20 February, 2009 (12:20) | <a href="http://wordpressthemesbase.com/wp/category/category-1/" title="View all posts in Category 1" rel="category tag">Category 1</a> | By: admin</strong></p>
+
+                <div class="contenttext">
+                  <p class="post">This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p>
+                  <ol>
+                    <li>Ordered list item #1</li>
+                    <li>Ordered list item #2</li>
+                    <li>Ordered list item #3</li>
+                    <li>Ordered list item #4</li>
+                    <li>Ordered list item #5</li>
+                  </ol>
+                  <p>This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p>
+                  </p></div>
+                  <p class="postmeta"><a href="http://wordpressthemesbase.com/wp/a-post-with-an-ordered-list/#respond" title="Comment on A Post with an Ordered List">Comments: -</a></p>
+                </div>
+
+
+                <div class="post">
+                  <h2><a href="http://wordpressthemesbase.com/wp/a-post-with-an-unordered-list/" title="A Post with an Unordered List">A Post with an Unordered List</a></h2>
+                  <p class="timestamp"><strong>10 February, 2009 (12:19) | <a href="http://wordpressthemesbase.com/wp/category/category-2/" title="View all posts in Category 2" rel="category tag">Category 2</a> | By: admin</strong></p>
+
+                  <div class="contenttext">
+                    <p class="entrybody">This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p>
+                    <ul>
+                      <li>Unordered list item #1</li>
+                      <li>Unordered list item #2</li>
+                      <li>Unordered list item #3</li>
+                      <li>Unordered list item #4</li>
+                      <li>Unordered list item #5</li>
+                    </ul>
+                    <p>This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p>
+                    </p></div>
+                    <p class="postmeta"><a href="http://wordpressthemesbase.com/wp/a-post-with-an-unordered-list/#respond" title="Comment on A Post with an Unordered List">Comments: -</a></p>
+                  </div>
+
+
+                  <div class="post">
+                    <h2><a href="http://wordpressthemesbase.com/wp/a-post-with-a-blockquote/" title="A Post with a Blockquote">A Post with a Blockquote</a></h2>
+                    <p class="timestamp"><strong>1 February, 2009 (12:19) | <a href="http://wordpressthemesbase.com/wp/category/category-2/" title="View all posts in Category 2" rel="category tag">Category 2</a> | By: admin</strong></p>
+
+                    <div class="contenttext">
+                      <p class="post">This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p>
+                      <blockquote><p>This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p></blockquote>
+                      <p>This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress. This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</p>
+                      </p></div>
+                      <p class="postmeta"><a href="http://wordpressthemesbase.com/wp/a-post-with-a-blockquote/#respond" title="Comment on A Post with a Blockquote">Comments: -</a></p>
+                    </div>
+
+
+                    <div class="postpagesnav">
+                      <div class="older"></div>
+                      <div class="newer"></div>
+                      <br class="clear">
+                    </div>
+
+
+              </div><!-- #content-->
+
+              <div id="sidebar">
+                <h2>Introduction</h2>
+                <p>Write a short presentation of your blog or website in the sidebar.php template file, or replace the sidebars with widgets for full flexibility. This theme has four widget areas: Header, Sidebar top, Sidebar left and Sidebar right!</p>
+
+                <div class="left">
+
+                  <h2>Pages</h2>
+                  <ul>
+                    <li class="page_item page-item-7"><a href="http://wordpressthemesbase.com/wp/about/" title="About">About</a></li>
+                  </ul>
+
+                  <h2>Archive</h2>
+                  <ul>
+                    <li><a href="http://wordpressthemesbase.com/wp/2009/03/" title="March 2009">March 2009</a></li>
+                    <li><a href="http://wordpressthemesbase.com/wp/2009/02/" title="February 2009">February 2009</a></li>
+                  </ul>
+
+                </div>
+
+                <div class="right">
+
+                  <h2>Tags</h2>
+                  <ul>
+                    <li></li>
+                  </ul>
+
+                  <table id="wp-calendar" summary="Calendar">
+                    <caption>January 2011</caption>
+                    <thead>
+                      <tr>
+                        <th abbr="Monday" scope="col" title="Monday">M</th>
+                        <th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+                        <th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+                        <th abbr="Thursday" scope="col" title="Thursday">T</th>
+                        <th abbr="Friday" scope="col" title="Friday">F</th>
+                        <th abbr="Saturday" scope="col" title="Saturday">S</th>
+                        <th abbr="Sunday" scope="col" title="Sunday">S</th>
+                      </tr>
+                    </thead>
+
+                    <tfoot>
+                      <tr>
+                        <td abbr="March" colspan="3" id="prev"><a href="http://wordpressthemesbase.com/wp/2009/03/" title="View posts for March 2009">« Mar</a></td>
+                        <td class="pad">&nbsp;</td>
+                        <td colspan="3" id="next" class="pad">&nbsp;</td>
+                      </tr>
+                    </tfoot>
+
+                    <tbody>
+                      <tr>
+                        <td colspan="5" class="pad">&nbsp;</td><td>1</td><td>2</td>
+                      </tr>
+                      <tr>
+                        <td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
+                      </tr>
+                      <tr>
+                        <td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+                      </tr>
+                      <tr>
+                        <td>17</td><td>18</td><td>19</td><td>20</td><td id="today">21</td><td>22</td><td>23</td>
+                      </tr>
+                      <tr>
+                        <td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+                      </tr>
+                      <tr>
+                        <td>31</td>
+                        <td class="pad" colspan="6">&nbsp;</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h2>Categories</h2>
+                  <ul>
+                    <li class="cat-item cat-item-3"><a href="http://wordpressthemesbase.com/wp/category/category-1/" title="View all posts filed under Category 1">Category 1</a>
+                    </li>
+                    <li class="cat-item cat-item-4"><a href="http://wordpressthemesbase.com/wp/category/category-2/" title="View all posts filed under Category 2">Category 2</a>
+                    </li>
+                  </ul>
+
+                  <h2>Meta</h2>
+                  <ul>
+                    <li><a href="http://wordpressthemesbase.com/wp/wp-login.php">Log in</a></li>
+                  </ul>
+
+
+                </div><!-- #right-->
+
+              <br class="clear">
+              </div><!-- #sidebar-->
+
+              <div id="footer">
+                <div class="splitleft">
+                  <p><a class="feedlink" href="http://wordpressthemesbase.com/wp/feed/">Subscribe to feed</a></p>
+                </div>
+
+                <div class="splitright">
+                  <p><span class="credits">© 2011 <a href="http://wordpressthemesbase.com/wp">WordPress Themes Demo</a></span><br> <!-- Start -->Wordpress themes<!-- End --></p>
+                  <p class="hide clear"><a href="http://wordpressthemesbase.com/wp/?preview_theme=daleri-sweet#top">Top of page</a></p>
+                </div>
+              </div><!-- #footer-->
+
+
+
+          </div><!-- #?-->
+        </div><!-- #?-->
+        <hr class="clear">
+    </div><!-- #bodyinner-->
 
     <%= render_cell 'k3/inline_editor', :init_edit_mode %>
   </body>
