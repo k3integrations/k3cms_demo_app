@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110120172201) do
+ActiveRecord::Schema.define(:version => 20110120172202) do
 
   create_table "k3_blog_blog_posts", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20110120172201) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"
+    t.text     "meta_description"
+    t.text     "meta_keywords"
   end
 
   add_index "k3_blog_blog_posts", ["cached_slug"], :name => "index_k3_blog_blog_posts_on_cached_slug", :unique => true
