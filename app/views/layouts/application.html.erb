@@ -35,7 +35,6 @@
         <div id="above_header">
           <div class="page_fixed_width">
             <ul>
-              <li><%= link_to 'Sign up', new_user_registration_path %></li>
               <li><%= link_to 'Sign in', new_user_session_path %></li>
             </ul>
           </div>
@@ -64,8 +63,8 @@
             <% if flash[:notice] %>
               <p class="notice"><%= notice %></p>
             <% end %>
-            <% if flash[:error] %>
-              <p class="error"><%= flash[:error] %></p>
+            <% if flash[:alert] %>
+              <p class="alert"><%= flash[:alert] %></p>
             <% end %>
 
             <%= yield %>
