@@ -1,3 +1,20 @@
+/*------------------------------------------------------------------------------------------------*/
+/* Layout-specific */
+
+#above_header {
+  background: white;
+}
+#above_header ul {
+  margin: 0;
+}
+#above_header ul li {
+  list-style: none;
+  display: inline;
+}
+
+
+/*------------------------------------------------------------------------------------------------*/
+/* General */
 label {
   font-weight: bold;
 }

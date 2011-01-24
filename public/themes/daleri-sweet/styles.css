@@ -20,7 +20,7 @@ body {
 #body {
   padding-bottom: 60px;   /* Height of the footer */
 }
-#fixed_width {
+.page_fixed_width {
   width: 950px;
   margin: 0 auto;
 }
@@ -83,7 +83,7 @@ h2,h3,h4 {
 #top_left {
   margin: 0px;
   width: 100px;
-  padding: 10px 0 0 0;
+  padding: 20px 0 0 0;
   text-align: left;
   float: left;
 }

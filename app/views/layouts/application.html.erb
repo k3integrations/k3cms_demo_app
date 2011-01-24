@@ -21,29 +21,31 @@
 
   <body>
     <div id="container">
-        <%= render :file => 'k3/pages/init.html.haml' %>
-        <% if user_signed_in? -%>
-          <%# TODO: Should this part be moved out to k3_authentication or similar gem? %>
-          <% k3_ribbon_add_item do %>
-            <li class="logged_in_as">
-              Logged in as: <%= k3_user.email %>
-            </li>
-            <li>
-              <%= link_to 'Sign out', destroy_user_session_path %>
-            </li>
-          <% end -%>
-        <% else %>
-          <ul>
-          <li><%= link_to 'Sign up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign in', new_user_session_path %></li>
-          </ul>
+      <%= render :file => 'k3/pages/init.html.haml' %>
+      <% if user_signed_in? -%>
+        <% k3_ribbon_add_item do %>
+          <li class="logged_in_as">
+            Logged in as: <%= k3_user.email %>
+          </li>
+          <li>
+            <%= link_to 'Sign out', destroy_user_session_path %>
+          </li>
         <% end -%>
-        <%= k3_ribbon %>
+      <% else %>
+        <div id="above_header">
+          <div class="page_fixed_width">
+            <ul>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+            </ul>
+          </div>
+        </div>
+      <% end -%>
+      <%= k3_ribbon %>
+
 
       <div id="body">
-
-
-        <div id="fixed_width">
+        <div class="page_fixed_width">
 
           <div id="top">
             <div id="top_left">
@@ -77,12 +79,12 @@
             <br class="clear" />
           </div><!-- #sidebar-->
 
-        </div><!-- #fixed_width-->
+        </div><!-- .page_fixed_width-->
         <br class="clear">
       </div><!-- #body_inner_bg-->
 
       <div id="footer">
-        <div id="fixed_width">
+        <div class="page_fixed_width">
         <hr/>
           <div class="split_left">
           </div>
@@ -90,7 +92,7 @@
           <div class="split_right">
             <p><span class="credits">© <%= Date.today.year %> Authors</p>
           </div>
-        </div><!-- #fixed_width-->
+        </div><!-- .page_fixed_width-->
       </div><!-- #footer-->
 
     </div><!-- #container-->
