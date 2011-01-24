@@ -12,78 +12,88 @@
     <![endif]-->
     <%= stylesheet_link_tag :all, :recursive => true %>
     <%= stylesheet_link_tag '/themes/daleri-sweet/styles.css' %>
+    <!--[if lt IE 7]>
+    <%= stylesheet_link_tag '/themes/daleri-sweet/styles.ltIE7.css' %>
+    <![endif]-->
     <%= javascript_include_tag :defaults, :k3 %>
     <%= csrf_meta_tag %>
   </head>
 
   <body>
-    <%= render :file => 'k3/pages/init.html.haml' %>
-    <% if user_signed_in? -%>
-      <%# TODO: Should this part be moved out to k3_authentication or similar gem? %>
-      <% k3_ribbon_add_item do %>
-        <li class="logged_in_as">
-          Logged in as: <%= k3_user.email %>
-        </li>
-        <li>
-          <%= link_to 'Sign out', destroy_user_session_path %>
-        </li>
-      <% end -%>
-    <% else %>
-      <ul>
-      <li><%= link_to 'Sign up', new_user_registration_path %></li>
-      <li><%= link_to 'Sign in', new_user_session_path %></li>
-      </ul>
-    <% end -%>
-    <%= k3_ribbon %>
+    <div id="container">
+        <%= render :file => 'k3/pages/init.html.haml' %>
+        <% if user_signed_in? -%>
+          <%# TODO: Should this part be moved out to k3_authentication or similar gem? %>
+          <% k3_ribbon_add_item do %>
+            <li class="logged_in_as">
+              Logged in as: <%= k3_user.email %>
+            </li>
+            <li>
+              <%= link_to 'Sign out', destroy_user_session_path %>
+            </li>
+          <% end -%>
+        <% else %>
+          <ul>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
+          </ul>
+        <% end -%>
+        <%= k3_ribbon %>
 
-    <div id="body_inner_bg">
-      <div id="fixed_width">
+      <div id="body">
 
-        <div id="top">
-          <div id="top_left">
-            <%= image_tag 'logo.png' %>
-          </div>
-          <div id="top_right">
-            <h1><%= link_to content_for(:title), '/' %></h1>
-            <% if content_for?(:subtitle) %>
-              <p><strong><%= content_for :subtitle %></strong></p>
+
+        <div id="fixed_width">
+
+          <div id="top">
+            <div id="top_left">
+              <%= image_tag 'logo.png' %>
+            </div>
+            <div id="top_right">
+              <h1><%= link_to content_for(:title), '/' %></h1>
+              <% if content_for?(:subtitle) %>
+                <p><strong><%= content_for :subtitle %></strong></p>
+              <% end %>
+            </div>
+
+          </div><!-- #top-->
+
+          <div id="content">
+            <% if flash[:notice] %>
+              <p class="notice"><%= notice %></p>
             <% end %>
-          </div>
+            <% if flash[:error] %>
+              <p class="error"><%= flash[:error] %></p>
+            <% end %>
 
-        </div><!-- #top-->
+            <%= yield %>
 
-        <div id="content">
-          <% if flash[:notice] %>
-            <p class="notice"><%= notice %></p>
-          <% end %>
-          <% if flash[:error] %>
-            <p class="error"><%= flash[:error] %></p>
-          <% end %>
+          </div><!-- #content-->
 
-          <%= yield %>
+          <div id="sidebar">
+            <h2>Introduction</h2>
+            <p>Write a short presentation of your blog or website in the sidebar.php template file, or replace the sidebars with widgets for full flexibility. This theme has four widget areas: Header, Sidebar top, Sidebar left and Sidebar right!</p>
 
-        </div><!-- #content-->
+            <br class="clear" />
+          </div><!-- #sidebar-->
 
-        <div id="sidebar">
-          <h2>Introduction</h2>
-          <p>Write a short presentation of your blog or website in the sidebar.php template file, or replace the sidebars with widgets for full flexibility. This theme has four widget areas: Header, Sidebar top, Sidebar left and Sidebar right!</p>
+        </div><!-- #fixed_width-->
+        <br class="clear">
+      </div><!-- #body_inner_bg-->
 
-          <br class="clear" />
-        </div><!-- #sidebar-->
-
-        <div id="footer">
+      <div id="footer">
+        <div id="fixed_width">
+        <hr/>
           <div class="split_left">
           </div>
 
           <div class="split_right">
             <p><span class="credits">© <%= Date.today.year %> Authors</p>
           </div>
-        </div><!-- #footer-->
+        </div><!-- #fixed_width-->
+      </div><!-- #footer-->
 
-      </div><!-- #fixed_width-->
-      <br class="clear">
-    </div><!-- #body_inner_bg-->
-
+    </div><!-- #container-->
     <%= render_cell 'k3/inline_editor', :init_edit_mode %>
   </body>
 </html>

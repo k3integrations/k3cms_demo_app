@@ -6,6 +6,37 @@ Tags: fixed width, two columns, three columns, widgets, blue, 1024px, andreas, v
 Author: Andreas Viklund & Johanna Fält
 */
 
+/*------------------------------------------------------------------------------------------------*/
+/* Footer at the bottom of the page
+ * http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page */
+
+html,
+body {
+   margin: 0;
+   padding: 0;
+   height: 100%;
+}
+
+#body {
+  padding-bottom: 60px;   /* Height of the footer */
+}
+#fixed_width {
+  width: 950px;
+  margin: 0 auto;
+}
+#container {
+  min-height: 100%;
+  position: relative;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;   /* Height of the footer */
+}
+
+/*------------------------------------------------------------------------------------------------*/
+
 body {
   color: #444;
   font: 84% Tahoma,Verdana,Arial,sans-serif;
@@ -13,13 +44,8 @@ body {
   background: #405a6a url(images/body-bg.gif) top center repeat-y;
 }
 
-#body_inner_bg {
+#body {
   background: url(images/inner-bg.jpg) top center no-repeat;
-}
-
-#fixed_width {
-  width: 950px;
-  margin: 0 auto;
 }
 
 /*------------------------------------------------------------------------------------------------*/
@@ -224,11 +250,11 @@ h2,h3,h4 {
 }
 
 /* Footer */
+
 #footer {
   clear: both;
   color: #777;
   text-align: center;
-  border-top: 2px solid #bbb;
 }
 
 #footer p {
