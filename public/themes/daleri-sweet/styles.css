@@ -19,6 +19,7 @@ body {
 
 #body {
   padding-bottom: 60px;   /* Height of the footer */
+  min-height: 420px; /* Height of inner-bg.jpg */
 }
 .page_fixed_width {
   width: 950px;
