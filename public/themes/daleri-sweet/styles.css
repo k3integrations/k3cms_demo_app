@@ -183,6 +183,9 @@ h2,h3,h4 {
   margin: 0;
 }
 
+#content h1 {
+}
+
 #content h2 {
   font-size: 1.6em;
   clear: left;
@@ -355,11 +358,11 @@ a img {
 }
 
 .k3_blog_blog_post {
-  padding-top: 16px;
 }
 
 .k3_blog_blog_post + .k3_blog_blog_post {
   border-top: 2px solid #bbb;
+  padding-top: 16px;
   margin-bottom: 16px;
 }
 
