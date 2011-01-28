@@ -1,0 +1,1 @@
+../../../k3_inline_editor/public/javascripts/css_browser_selector.js
