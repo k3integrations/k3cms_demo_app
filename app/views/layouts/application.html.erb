@@ -16,6 +16,7 @@
     <%= stylesheet_link_tag '/themes/daleri-sweet/styles.ltIE7.css' %>
     <![endif]-->
     <%= javascript_include_tag :defaults, :k3 %>
+    <%= javascript_include_tag 'http://html5.kaltura.org/js' unless edit_mode? %>
     <%= csrf_meta_tag %>
   </head>
 
