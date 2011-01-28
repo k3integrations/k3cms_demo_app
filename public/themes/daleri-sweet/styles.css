@@ -327,11 +327,8 @@ a img {
   border: 0;
 }
 
-/* Various classes */
-/*.feedlink {padding: 20px 0 20px 52px; margin: 15px 0 10px 0; background: url(images/feed.jpg) center left no-repeat;}*/
 .split_left {
   float: left;
-  padding-top: 10px;
   width: 49%;
   text-align: left;
 }
