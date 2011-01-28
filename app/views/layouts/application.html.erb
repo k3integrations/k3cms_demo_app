@@ -28,9 +28,8 @@
           <li class="logged_in_as">
             Logged in as: <%= k3_user.email %>
           </li>
-          <li>
-            <%= link_to 'Sign out', destroy_user_session_path %>
-          </li>
+          <li><%= link_to 'Profile', edit_user_registration_path %></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path %></li>
         <% end -%>
       <% else %>
         <div id="above_header">
