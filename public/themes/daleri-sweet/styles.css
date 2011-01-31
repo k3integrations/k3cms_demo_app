@@ -36,6 +36,12 @@ body {
   height: 30px;   /* Height of the footer */
 }
 
+/* Note: this technique depends on css_browser_selector.js (currently included by k3_inline_editor) */
+.ie5 #container,
+.ie6 #container {
+  height: 100%;
+}
+
 /*------------------------------------------------------------------------------------------------*/
 
 body {
