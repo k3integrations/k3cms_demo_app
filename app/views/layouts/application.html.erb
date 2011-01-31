@@ -20,6 +20,7 @@
   <body>
     <div id="container">
       <%= render :file => 'k3/pages/init.html.haml' %>
+      <%= render :file => 'k3/blog/init.html.haml' %>
       <% if user_signed_in? -%>
         <% k3_ribbon_add_item do %>
           <li><%= link_to 'Sign out', destroy_user_session_path %></li>

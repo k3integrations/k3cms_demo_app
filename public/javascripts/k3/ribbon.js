@@ -1,0 +1,1 @@
+../../../../k3_ribbon/public/javascripts/k3/ribbon.js
