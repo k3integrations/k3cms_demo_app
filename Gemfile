@@ -56,6 +56,7 @@ gem 'cells', :git => 'git://github.com/TylerRick/cells.git'
 gem 'haml'
 gem 'haml-rails'
 gem 'devise' unless find_gem('devise')
+gem 'validates_timeliness', :git => 'git://github.com/adzap/validates_timeliness.git'
 
 group :test do
   gem "rspec-rails"
