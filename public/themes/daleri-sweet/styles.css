@@ -248,12 +248,12 @@ p + p {
 
 #content img.left {
   float: left;
-  margin: 0 10px 10px 0;
+  margin: 10px 10px 10px 0;
 }
 
 #content img.right {
   float: right;
-  margin: 0 0 10px 10px;
+  margin: 10px 0 10px 10px;
 }
 
 #content img.center {
@@ -263,7 +263,6 @@ p + p {
 
 #content img.framed {
   padding: 5px;
-  background: #222;
   border: 1px solid #555;
 }
 
