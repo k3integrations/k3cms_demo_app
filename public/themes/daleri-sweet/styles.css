@@ -246,12 +246,12 @@ p + p {
   padding: 0;
 }
 
-#content img.left {
+#content img.float_left {
   float: left;
   margin: 10px 10px 10px 0;
 }
 
-#content img.right {
+#content img.float_right {
   float: right;
   margin: 10px 0 10px 10px;
 }
