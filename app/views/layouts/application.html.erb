@@ -31,11 +31,9 @@
         <% end -%>
       <% else %>
         <div id="above_header">
-          <div class="page_fixed_width">
-            <ul>
-              <li><%= link_to 'Sign in', new_user_session_path %></li>
-            </ul>
-          </div>
+          <ul>
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+          </ul>
         </div>
       <% end -%>
       <%= k3_ribbon %>
