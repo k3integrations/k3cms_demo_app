@@ -246,22 +246,26 @@ p + p {
   padding: 0;
 }
 
-#content img.float_left {
+#content img.float_left,
+#content video.float_left {
   float: left;
   margin: 10px 10px 10px 0;
 }
 
-#content img.float_right {
+#content img.float_right,
+#content video.float_right {
   float: right;
   margin: 10px 0 10px 10px;
 }
 
-#content img.center {
+#content img.center,
+#content video.center {
   margin: 2px auto 10px;
   display: block;
 }
 
-#content img.framed {
+#content img.framed,
+#content video.framed {
   padding: 5px;
   border: 1px solid #555;
 }
