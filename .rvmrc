@@ -1,1 +1,1 @@
-rvm 1.9.2-p136@framework --create
+rvm use 1.9.2-p180@k3cms --create
