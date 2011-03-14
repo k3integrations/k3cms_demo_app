@@ -1,4 +1,6 @@
 require 'k3/authorization/drivers/devise'
+#require 'k3/authorization/general_controller_methods'
+require 'cancan'
 
 # Devise must initialize first, so use the following hook.
 module ActionDispatch::Routing

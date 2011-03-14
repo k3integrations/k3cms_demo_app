@@ -1,23 +1,12 @@
 source 'http://rubygems.org'
 
 k3_gems = %w[
-  k3_core
-  k3_pages 
-  k3_ribbon 
-  k3_inline_editor 
-  k3_trivial_authorization 
-  k3_authorization 
-  k3_cancan
+  k3cms
   k3_blog
 ]
 
 if File.exists?("Gemfile.local")
-  begin
-    contents  = File.read("Gemfile.local")
-    eval(contents, binding, __FILE__, __LINE__)
-  rescue Exception => e
-    puts "Exception = #{e.inspect}"
-  end
+  eval(File.read("Gemfile.local"), binding, __FILE__, __LINE__)
 end
 
 def find_gem(name, *args)
@@ -35,22 +24,12 @@ k3_gems.each do |gem_name|
 end
 
 gem 'rails', '3.0.3'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+#gem 'mysql2'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'ruby-debug19'
 
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
-
-gem 'mysql2'
+# TODO: these should be in the k3cms gemspec
 # Depending on this fork in order to be able to use outer_content_for in k3_ribbon
 gem 'cells', :git => 'git://github.com/TylerRick/cells.git'
 gem 'haml'
@@ -70,4 +49,4 @@ group :cucumber do
   gem 'rspec-rails'
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
-end  
+end

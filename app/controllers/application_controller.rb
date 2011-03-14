@@ -1,3 +1,5 @@
+require 'k3_ribbon'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
