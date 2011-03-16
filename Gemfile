@@ -26,16 +26,14 @@ end
 gem 'rails', '3.0.3'
 #gem 'mysql2'
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'devise' unless find_gem('devise')
 
 gem 'ruby-debug19'
 
 # TODO: these should be in the k3cms gemspec
-# Depending on this fork in order to be able to use outer_content_for in k3_ribbon
-gem 'cells', :git => 'git://github.com/TylerRick/cells.git'
-gem 'haml'
-gem 'haml-rails'
-gem 'devise' unless find_gem('devise')
-gem 'validates_timeliness', :git => 'git://github.com/adzap/validates_timeliness.git'
+#gem 'haml'
+#gem 'haml-rails'
+#gem 'validates_timeliness', :git => 'git://github.com/adzap/validates_timeliness.git'
 
 group :test do
   gem "rspec-rails"
