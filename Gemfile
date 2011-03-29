@@ -24,11 +24,16 @@ k3_gems.each do |gem_name|
 end
 
 gem 'rails', '3.0.3'
-#gem 'mysql2'
-gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise' unless find_gem('devise')
-
 gem 'ruby-debug19'
+
+group :production do
+  gem 'mysql2'
+end
+
+group :development, :test do
+  gem 'sqlite3'
+end
 
 # TODO: these should be in the k3cms gemspec
 #gem 'haml'
