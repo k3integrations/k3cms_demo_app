@@ -29,6 +29,8 @@ gem 'ruby-debug19'
 
 group :production do
   gem 'mysql2'
+  gem 'exception_notification', :git => 'git://github.com/pyrat/exception_notification.git', :require => 'exception_notifier'
+  gem 'capistrano'
 end
 
 group :development, :test do
