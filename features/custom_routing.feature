@@ -13,15 +13,15 @@ Feature: Custom routing
     Then I should see /[Cc]reate it now/
 
     When I follow "create it now"
-    Then I should be on "/k3_pages/new"
+    Then I should be on "/k3cms_pages/new"
     #Then show me the page
-    Then the "k3_page[title]" field within "#new_k3_page" should contain "About us"
-    Then the "k3_page[url]"   field within "#new_k3_page" should contain "/about-us"
+    Then the "k3cms_page[title]" field within "#new_k3cms_page" should contain "About us"
+    Then the "k3cms_page[url]"   field within "#new_k3cms_page" should contain "/about-us"
 
   Scenario: A page has a route that would conflict with a normal route
     Given the following pages (skipping validations):
       | url              | title               |
-      | /k3_pages/not_found | My conflicting page |
-    When I go to "/k3_pages/not_found"
+      | /k3cms_pages/not_found | My conflicting page |
+    When I go to "/k3cms_pages/not_found"
     #Then I should be on the page page for "My conflicting page"
     Then I should see "choose a different URL for your page"

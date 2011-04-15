@@ -32,24 +32,24 @@ body {
 /*------------------------------------------------------------------------------------------------*/
 /* Ribbon */
 
-#k3_ribbon {
+#k3cms_ribbon {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
 }
-#k3_ribbon:after { content: "."; display: block; line-height: 0; height: 0; clear: both; visibility: hidden; }
+#k3cms_ribbon:after { content: "."; display: block; line-height: 0; height: 0; clear: both; visibility: hidden; }
 
-#k3_ribbon {
+#k3cms_ribbon {
   background: white;
 }
 
-#k3_ribbon .row + .row {
+#k3cms_ribbon .row + .row {
   clear: both;
 }
 
-#k3_ribbon,
-#k3_ribbon ul
+#k3cms_ribbon,
+#k3cms_ribbon ul
 {
   margin: 0;
   padding: 0;
@@ -58,55 +58,55 @@ body {
 /*------------------------------------------------------------------------------------------------*/
 /* row_1 */
 
-#k3_ribbon .row_1 {
+#k3cms_ribbon .row_1 {
   margin: 0 5px 0 5px;
 }
 
-#k3_ribbon .row_1 ul li {
+#k3cms_ribbon .row_1 ul li {
   list-style-type: none;
 }
-#k3_ribbon .row_1 .split_left ul li {
+#k3cms_ribbon .row_1 .split_left ul li {
   float: left;
   padding: 0 5px 0 0;
 }
-#k3_ribbon .row_1 .split_right ul li {
+#k3cms_ribbon .row_1 .split_right ul li {
   float: right;
   padding: 0 0 0 5px;
 }
 
 /*------------------------------------------------------------------------------------------------*/
 
-#k3_ribbon .row_2 {
+#k3cms_ribbon .row_2 {
   margin: 0 0 0 0;
 }
 
-.edit_mode_off #k3_ribbon .row_2 {
+.edit_mode_off #k3cms_ribbon .row_2 {
   display: none;
 }
 
-#k3_ribbon .row_2 #k3_logo {
+#k3cms_ribbon .row_2 #k3cms_logo {
   margin: 0 3px 0 3px;
 }
 
 
 /*------------------------------------------------------------------------------------------------*/
-#k3_ribbon .row_3 {
+#k3cms_ribbon .row_3 {
   margin: 0 0 0 0;
 }
 
-.edit_mode_off #k3_ribbon .row_3 {
+.edit_mode_off #k3cms_ribbon .row_3 {
   display: none;
 }
 
 /*------------------------------------------------------------------------------------------------*/
 
 /* This should be the same height as the ribbon in order to push the actual page contents down so that the top is aligned with the bottom of the ribbon. */
-#k3_ribbon_underneath {
+#k3cms_ribbon_underneath {
   height: 65px;
   background-color: white;
 }
 
-#k3_drawers {
+#k3cms_drawers {
   clear: both;
   width: 100%;
   position: relative;
@@ -116,7 +116,7 @@ body {
 /* Tabs */
 
 /* root element for tabs */
-#k3_ribbon ul.tabs {
+#k3cms_ribbon ul.tabs {
   margin: 0 !important;
   padding: 0;
   height: 17px; /* 'a' tag: 15px (height) + 1px + 1px (border) */
@@ -124,28 +124,28 @@ body {
 }
 
 /* single tab */
-#k3_ribbon ul.tabs li {
+#k3cms_ribbon ul.tabs li {
   float: left;
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
 
-#k3_ribbon ul.tabs li.last_saved_status {
+#k3cms_ribbon ul.tabs li.last_saved_status {
   margin-top: -6px;
   float: right;
 }
-#k3_ribbon ul.tabs {
+#k3cms_ribbon ul.tabs {
   /* This didn't work: */
   /*margin-top: 6px !important;*/
 }
 
-#k3_ribbon ul.tabs li.admin {
+#k3cms_ribbon ul.tabs li.admin {
   float: right;
 }
 
 /* link inside the tab */
-#k3_ribbon ul.tabs a {
+#k3cms_ribbon ul.tabs a {
   display: block;
   float: left;
 
@@ -167,13 +167,13 @@ body {
   color: #777;
 }
 
-#k3_ribbon ul.tabs a:hover {
+#k3cms_ribbon ul.tabs a:hover {
   background-color: #F7F7F7;
   color: #333;
 }
   
 /* selected tab */
-#k3_ribbon ul.tabs a.current {
+#k3cms_ribbon ul.tabs a.current {
   background-color:        #fff; /* must match .panes>div.background-color */
   border-bottom: 1px solid #fff; /* must match .panes>div.background-color */
   color: #000;
@@ -181,7 +181,7 @@ body {
 }
 
 /* tab pane */
-#k3_ribbon .panes>div {
+#k3cms_ribbon .panes>div {
   display: none;
   border: 1px solid #666;
   border-width: 0 1px 1px 1px;
@@ -189,13 +189,13 @@ body {
   background-color: #fff;
 }
 
-#k3_ribbon .panes>div li {
+#k3cms_ribbon .panes>div li {
   float: left;
   list-style-type: none;
   margin: 0 2px 0 2px;
 }
 
-#k3_ribbon .panes>div li.icon {
+#k3cms_ribbon .panes>div li.icon {
   margin: 0 0px 0 0px;
 }
 
@@ -214,7 +214,7 @@ body {
 /*------------------------------------------------------------------------------------------------*/
 /* buttons */
 
-#k3_ribbon li.button {
+#k3cms_ribbon li.button {
   position: relative;
   display: block;
   float: left;
@@ -232,37 +232,37 @@ body {
   border-left-color: #ddd;
   */
 }
-.k3_section li.button a {
+.k3cms_section li.button a {
   text-decoration: none !important;
 }
-#k3_ribbon li.button.toggled_on {
+#k3cms_ribbon li.button.toggled_on {
   border-top-color: #666;
   border-right-color: #ddd;
   border-bottom-color: #ddd;
   border-left-color: #666;
 }
-#k3_ribbon li.button.disabled {
+#k3cms_ribbon li.button.disabled {
   color: #ccc;
   /*border-color: #eee;*/
 }
-#k3_ribbon li.button.disabled a:before {
-  content: url(/images/k3/inline_editor/disabled_overlay.png);
+#k3cms_ribbon li.button.disabled a:before {
+  content: url(/images/k3cms/inline_editor/disabled_overlay.png);
   display: block;
   position: absolute;
   right: 0px;
   top: 0px;
 }
-.k3_section li.button a:hover {
+.k3cms_section li.button a:hover {
   background-color: yellow;
 }
-.k3_section li.button.disabled a:hover {
+.k3cms_section li.button.disabled a:hover {
   background-color: transparent;
 }
 
 /*------------------------------------------------------------------------------------------------*/
 /* selects and other types of controls/items */
 
-#k3_ribbon li select {
+#k3cms_ribbon li select {
   margin: 3px 0 0 0;
 }
 
@@ -305,12 +305,12 @@ ul, li {
 /*SECTIONS SYSTEM*/
 
 /*common defaults for all sections*/
-.k3_section {
+.k3cms_section {
   /*margin-bottom: 5px;*/
 }
-.k3_section h2,
-.k3_section h3         { padding: 1px 3px; margin: 0; }
-.k3_section a          {
+.k3cms_section h2,
+.k3cms_section h3         { padding: 1px 3px; margin: 0; }
+.k3cms_section a          {
   padding: 0 3px;
   display: block;
   text-decoration: none;
@@ -319,39 +319,39 @@ ul, li {
 
 /*hide section titles by default*/
 /*
-.k3_section h2         { display: none; }
+.k3cms_section h2         { display: none; }
 */
 
 /*disable any margin-collapse*/
 /*
-.k3_section            { padding-top: 1px; padding-bottom: 1px; }
+.k3cms_section            { padding-top: 1px; padding-bottom: 1px; }
 */
 
 /*auto-clear sections*/
 /*
-.k3_section ul:after   { content: "."; display: block; line-height: 0; height: 0; clear: both; visibility: hidden; }
-* html .k3_section ul         { height: 1%;}
+.k3cms_section ul:after   { content: "."; display: block; line-height: 0; height: 0; clear: both; visibility: hidden; }
+* html .k3cms_section ul         { height: 1%;}
 */
 
 /*option: add this class to a section to make it render as a panel*/
 /*
-.k3_panel              { }
-.k3_panel h2           { display: block; }
+.k3cms_panel              { }
+.k3cms_panel h2           { display: block; }
 */
 
 /*option: add this class to a section to make it render as a dropdown menu*/
 /*
-.k3_dropdown h2        { display: block; }
-.k3_dropdown ul        { display: none; position: absolute; background: white; }
-.k3_dropdown:hover ul,
-.k3_dropdown.hover ul  { display: block; }
+.k3cms_dropdown h2        { display: block; }
+.k3cms_dropdown ul        { display: none; position: absolute; background: white; }
+.k3cms_dropdown:hover ul,
+.k3cms_dropdown.hover ul  { display: block; }
 */
 
 
-.k3_ribbon li.icon {
+.k3cms_ribbon li.icon {
   float:left;
 }
-.k3_ribbon li.icon a {
+.k3cms_ribbon li.icon a {
   width: 20px;
   height: 20px;
   overflow: hidden;
@@ -361,12 +361,12 @@ ul, li {
 
 /*DECORATION*/
 /*
-.k3_section h2             { background: #ddd; border: solid gray; border-width: 0 0 1px;}
-.k3_section h2 span        { color: gray;}
-.k3_panel                  { padding: 0; border: solid gray; border-width: 1px; background: white;}
-.k3_panel ul               { margin: 2px 0 5px; }
-.k3_dropdown               { padding: 0; border: solid gray; border-width: 1px 1px 0 1px; }
-.k3_dropdown ul            { border: solid gray; border-width: 0 1px 1px 1px; margin-left: -1px; padding: 5px 10px 5px 3px;}
+.k3cms_section h2             { background: #ddd; border: solid gray; border-width: 0 0 1px;}
+.k3cms_section h2 span        { color: gray;}
+.k3cms_panel                  { padding: 0; border: solid gray; border-width: 1px; background: white;}
+.k3cms_panel ul               { margin: 2px 0 5px; }
+.k3cms_dropdown               { padding: 0; border: solid gray; border-width: 1px 1px 0 1px; }
+.k3cms_dropdown ul            { border: solid gray; border-width: 0 1px 1px 1px; margin-left: -1px; padding: 5px 10px 5px 3px;}
 */
 
 /* End of CSS from WYMEditor */

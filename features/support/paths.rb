@@ -11,9 +11,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
-    when /^the k3_page page for "(.*)"$/i
-      k3_page_path(
-        K3::Page.where(:title => $1).first || raise(ActiveRecord::RecordNotFound)
+    when /^the k3cms_page page for "(.*)"$/i
+      k3cms_page_path(
+        K3cms::Page.where(:title => $1).first || raise(ActiveRecord::RecordNotFound)
       )
 
     #   when /^(.*)'s profile page$/i

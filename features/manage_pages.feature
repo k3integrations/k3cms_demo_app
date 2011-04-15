@@ -1,16 +1,16 @@
 Feature: Manage pages
   
   Scenario: Attempt to new page but fail validation
-    Given I am on the new k3_page page
+    Given I am on the new k3cms_page page
     And I press "Create"
-    Then I should be on the k3_pages page
+    Then I should be on the k3cms_pages page
     Then I should see "Title can't be blank"
 
   Scenario: Create new page
-    Given I am on the new k3_page page
+    Given I am on the new k3cms_page page
     And I fill in "Title" with "About us"
     And I press "Create"
-    Then I should be on the k3_page page for "About us"
+    Then I should be on the k3cms_page page for "About us"
     #Then print current_url
     #Then show me the page
 

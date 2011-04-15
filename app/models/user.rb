@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  include K3::Authorization::RealUser
+  include K3cms::Authorization::RealUser
 
   def to_s
     email

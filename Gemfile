@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-k3_gems = %w[
+k3cms_gems = %w[
   k3cms
-  k3_blog
+  k3cms_blog
 ]
 
 if File.exists?("Gemfile.local")
@@ -16,7 +16,7 @@ def find_gem(name, *args)
   @dependencies.find { |d| d.name == dep.name }
 end
 
-k3_gems.each do |gem_name|
+k3cms_gems.each do |gem_name|
   # Avoid conflicts with gems specified in Gemfile.local
   unless find_gem(gem_name)
     gem gem_name

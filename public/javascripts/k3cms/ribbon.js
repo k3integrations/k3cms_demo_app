@@ -94,13 +94,13 @@ function ISODateString(d) {
 }
 
 //--------------------------------------------------------------------------------------------------
-K3 = {
+K3cms = {
 }
 
 //--------------------------------------------------------------------------------------------------
 // Data structures
 
-K3_Ribbon = Class.extend({
+K3cms_Ribbon = Class.extend({
   init: function(options) {
     this.tabs = [];
     this.always_enabled = [];
@@ -133,12 +133,12 @@ K3_Ribbon = Class.extend({
   },
 });
 
-$.extend(K3_Ribbon, {
+$.extend(K3cms_Ribbon, {
   bindEventHandlers: function(element, options) {
     $.each(options, function(key, value) {
       if (key.match(/^on/)) {
         delete options[key];
-        var event_name = key.replace(/^on/, '').toLowerCase() + '.k3_ribbon';
+        var event_name = key.replace(/^on/, '').toLowerCase() + '.k3cms_ribbon';
         //console.log(event_name)
         element.bind(event_name, value);
       }
@@ -157,10 +157,10 @@ $.extend(K3_Ribbon, {
           html: last_saved_at
         })).
         append($('<button/>', { class: "save_button",
-          click: function() { K3_Ribbon.onSaving(); }
+          click: function() { K3cms_Ribbon.onSaving(); }
         }));
       status_element.find('.timeago').timeago();
-      K3_Ribbon.set_dirty_status(false);
+      K3cms_Ribbon.set_dirty_status(false);
     } else if (last_saved_at == 'Error') {
       // TODO: update this status to indicate that there was an error
     } else {
@@ -170,19 +170,19 @@ $.extend(K3_Ribbon, {
 
   set_dirty_status: function(dirty) {
     if (dirty) {
-      $('#k3_ribbon .save_button').html('Save now').removeAttr('disabled');
+      $('#k3cms_ribbon .save_button').html('Save now').removeAttr('disabled');
     } else {
-      $('#k3_ribbon .save_button').html('Saved').attr('disabled', true);
+      $('#k3cms_ribbon .save_button').html('Saved').attr('disabled', true);
     };
   },
   onSaving: function(dirty) {
-    $('#k3_ribbon .save_button').html('Saving...').attr('disabled', true);
+    $('#k3cms_ribbon .save_button').html('Saving...').attr('disabled', true);
   },
 
 })
 
 // A Tab represents both a tab and the pane underneath (containing Sections) that appears when you click on the tab
-K3_Ribbon.Tab = Class.extend({
+K3cms_Ribbon.Tab = Class.extend({
   init: function(name, options) {
     assertValidKeys(options, ['label', 'sections', /^on/]);
     this.name = name;
@@ -191,7 +191,7 @@ K3_Ribbon.Tab = Class.extend({
 
   renderTab: function() {
     var element = $('<li><a href="#' + this.name + '">' + this.label + '</a></li>')
-    K3_Ribbon.bindEventHandlers.call(this, element, this);
+    K3cms_Ribbon.bindEventHandlers.call(this, element, this);
     return element;
   },
   renderPane: function() {
@@ -218,14 +218,14 @@ K3_Ribbon.Tab = Class.extend({
   },
 });
 
-K3_Ribbon.Section = Class.extend({
+K3cms_Ribbon.Section = Class.extend({
   init: function(name, options) {
     this.name = name;
     assertValidKeys(options, ['label', 'items', /^on/]);
     $.extend(this, options);
   },
   render: function() {
-    var section = $('<div class="k3_section ' + this.name + '"></div>')
+    var section = $('<div class="k3cms_section ' + this.name + '"></div>')
     $.each(this.items, function(index, item) {
       //console.log("append(item)=", item);
       section.append(item.element);
@@ -240,27 +240,27 @@ K3_Ribbon.Section = Class.extend({
   },
 });
 
-K3_Ribbon.ToolbarItem = Class.extend({
+K3cms_Ribbon.ToolbarItem = Class.extend({
   // element:
   // onClick
   // onDisable (inherits overridable default behavior?)
   init: function(options) {
     $.extend(this, options);
     var self = this;
-    K3_Ribbon.bindEventHandlers.call(this, this.element, options);
+    K3cms_Ribbon.bindEventHandlers.call(this, this.element, options);
   },
 
   refresh: $.noop,
 });
 
-K3_Ribbon.Button = K3_Ribbon.ToolbarItem.extend({
+K3cms_Ribbon.Button = K3cms_Ribbon.ToolbarItem.extend({
   // onClick
   init: function(options) {
     this._super(options);
   },
 });
 
-K3_Ribbon.Drawer = Class.extend({
+K3cms_Ribbon.Drawer = Class.extend({
   init: function(id, options) {
     this.id = id;
     $.extend(this, options);
@@ -275,14 +275,14 @@ K3_Ribbon.Drawer = Class.extend({
       form.append('<input type="submit" id="' + this.id + '_submit" value="' + (this.submit_text || 'Submit') + '">&nbsp; ');
       form.append('<a onclick="toggleDrawer(\'' + this.id + '\'); return false;" href="#">Cancel</a>');
 
-    //K3_Ribbon.bindEventHandlers.call(this, root, this);
+    //K3cms_Ribbon.bindEventHandlers.call(this, root, this);
 
     // Set id attr based on name
     root.find('input').each(function() {
       if ($(this).attr('id') == '') {
         $(this).attr('id', self.id + '_' + $(this).attr('name'));
       };
-      // If not already prefixed (as is the case for K3_Ribbon.Drawer.FloatField, where we use generic ids like 'float_none'), we need to prefix now...
+      // If not already prefixed (as is the case for K3cms_Ribbon.Drawer.FloatField, where we use generic ids like 'float_none'), we need to prefix now...
       if ($(this).attr('id') && $(this).attr('id').indexOf(self.id + '_') !== 0) {
         $(this).attr('id', self.id + '_' + $(this).attr('id'));
       };
@@ -292,7 +292,7 @@ K3_Ribbon.Drawer = Class.extend({
         //$(this).attr('for', self.id + '_' + $(this).data('name'));
         $(this).attr('for', $(this).data('name'));
       };
-      // If not already prefixed (as is the case for K3_Ribbon.Drawer.FloatField, where we use generic ids like 'float_none'), we need to prefix now...
+      // If not already prefixed (as is the case for K3cms_Ribbon.Drawer.FloatField, where we use generic ids like 'float_none'), we need to prefix now...
       if ($(this).attr('for') && $(this).attr('for').indexOf(self.id + '_') !== 0) {
         $(this).attr('for', self.id + '_' + $(this).attr('for'));
       };
@@ -313,8 +313,8 @@ K3_Ribbon.Drawer = Class.extend({
     this.default_populate_with_defaults();
   },
   get: function() {
-    //return $('#k3_drawers .' + this.id + '.drawer');
-    return $('#k3_drawers #' + this.id);
+    //return $('#k3cms_drawers .' + this.id + '.drawer');
+    return $('#k3cms_drawers #' + this.id);
   },
   find: function(selector) {
     return this.get().find(selector);
@@ -332,51 +332,51 @@ K3_Ribbon.Drawer = Class.extend({
 
   var methods = {
     init: function(options) {
-      this.addClass('k3_ribbon');
-      var ribbon = this.data("k3_ribbon");
+      this.addClass('k3cms_ribbon');
+      var ribbon = this.data("k3cms_ribbon");
       if (ribbon) {
         ribbon.merge(options);
       } else {
-        ribbon = new K3_Ribbon(options);
+        ribbon = new K3cms_Ribbon(options);
       }
       //console.log('ribbon=', ribbon)
-      this.data("k3_ribbon", ribbon);
+      this.data("k3cms_ribbon", ribbon);
       return ribbon;
     },
 
     get: function() {
-      var ribbon = this.data('k3_ribbon');
+      var ribbon = this.data('k3cms_ribbon');
       return ribbon;
     },
 
     render: function() {
-      this.k3_ribbon('renderTabs');
+      this.k3cms_ribbon('renderTabs');
 
       // We disable everything at init time
       // You have to explicitly call enable for any items that should be enabled.
-      this.k3_ribbon('disableAll');
+      this.k3cms_ribbon('disableAll');
 
       $("ul.tabs").tabs("div.panes > div");
     },
 
     refresh: function() {
-      var ribbon = this.data('k3_ribbon');
+      var ribbon = this.data('k3cms_ribbon');
       ribbon.refresh();
     },
 
     addTabs: function(tabs) {
       // TODO: look for duplicate tabs by name and merge their items
 
-      var ribbon = this.data('k3_ribbon');
+      var ribbon = this.data('k3cms_ribbon');
       $.merge(ribbon.tabs, tabs);
-      this.data("k3_ribbon", ribbon)
+      this.data("k3cms_ribbon", ribbon)
     },
 
 
     renderTabs: function(tabs_container, panes_container) {
       var tabs_container =   this.find('.tabs')
       var panes_container =  this.find('.panes')
-      var data = this.data('k3_ribbon');
+      var data = this.data('k3cms_ribbon');
 
       $.each(data.tabs, function(index, tab) {
         tabs_container.append(tab.renderTab());
@@ -398,7 +398,7 @@ K3_Ribbon.Drawer = Class.extend({
     },
 
     disableAll: function() {
-      var ribbon = this.data("k3_ribbon");
+      var ribbon = this.data("k3cms_ribbon");
       this.find('.button').each(function() {
         var item = $(this);
         //console.log("item=", item);
@@ -414,10 +414,10 @@ K3_Ribbon.Drawer = Class.extend({
 
   };
 
-  $.fn.k3_ribbon = function(method) {
+  $.fn.k3cms_ribbon = function(method) {
     /*
     if (!options) {
-      var ribbon = $(this).data("k3_ribbon");
+      var ribbon = $(this).data("k3cms_ribbon");
       return ribbon;
     }
     */
@@ -428,7 +428,7 @@ K3_Ribbon.Drawer = Class.extend({
     } else if ( typeof method === 'object' || ! method ) {
       return methods.init.apply( this, arguments );
     } else {
-      $.error( 'Method ' +  method + ' does not exist on jQuery.k3_ribbon' );
+      $.error( 'Method ' +  method + ' does not exist on jQuery.k3cms_ribbon' );
     }
 
   }

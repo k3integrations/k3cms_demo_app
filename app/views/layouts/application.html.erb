@@ -20,14 +20,14 @@
   <body>
     <div id="container">
       <%# TODO: replace with single k3cms_init, or hook :top_of_page or something %>
-      <%= render :file => 'k3/pages/init.html.haml' %>
-      <%= render :file => 'k3/blog/init.html.haml' %>
+      <%= render :file => 'k3cms/pages/init.html.haml' %>
+      <%= render :file => 'k3cms/blog/init.html.haml' %>
       <% if user_signed_in? -%>
-        <% k3_ribbon_add_item do %>
+        <% k3cms_ribbon_add_item do %>
           <li><%= link_to 'Sign out', destroy_user_session_path %></li>
           <li><%= link_to 'Profile', edit_user_registration_path %></li>
           <li class="logged_in_as">
-            Logged in as: <%= k3_user.email %>
+            Logged in as: <%= k3cms_user.email %>
           </li>
         <% end -%>
       <% else %>
@@ -38,7 +38,7 @@
         </div>
       <% end -%>
       <%# TODO: replace with single k3cms_init %>
-      <%= k3_ribbon %>
+      <%= k3cms_ribbon %>
 
 
       <div id="body">
@@ -91,6 +91,6 @@
       </div><!-- #footer-->
 
     </div><!-- #container-->
-    <%= render_cell 'k3/inline_editor', :init_edit_mode %>
+    <%= render_cell 'k3cms/inline_editor', :init_edit_mode %>
   </body>
 </html>

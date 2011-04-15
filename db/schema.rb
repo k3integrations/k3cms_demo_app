@@ -10,9 +10,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110120172202) do
+ActiveRecord::Schema.define(:version => 20110415180204) do
 
-  create_table "k3_blog_blog_posts", :force => true do |t|
+  create_table "k3cms_blog_blog_posts", :force => true do |t|
     t.string   "title"
     t.string   "url"
     t.text     "summary"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(:version => 20110120172202) do
     t.text     "meta_keywords"
   end
 
-  add_index "k3_blog_blog_posts", ["cached_slug"], :name => "index_k3_blog_blog_posts_on_cached_slug", :unique => true
+  add_index "k3cms_blog_blog_posts", ["cached_slug"], :name => "index_k3_blog_blog_posts_on_cached_slug", :unique => true
 
-  create_table "k3_pages", :force => true do |t|
+  create_table "k3cms_pages", :force => true do |t|
     t.string   "title"
     t.string   "url"
     t.text     "body"

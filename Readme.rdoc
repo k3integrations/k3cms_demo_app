@@ -18,7 +18,7 @@ Licensed under the GNU Lesser General Public License, Version 3 (see License.txt
 4.  # Add root route (not done yet)
 5.  Add flash message display to layout
 6.  rails generate devise User
-7.  Make the User include K3::Authorization::RealUser module
+7.  Make the User include K3cms::Authorization::RealUser module
 8.  Add framework initializer
 
 PROBLEM:  Missing root route.  Pages works fine because of the .  Devise has issues.  So must override ApplicationController#after_sign_in_path_for and ApplicationController#after_sign_out_path_for

@@ -42,7 +42,7 @@ toolbar_options = [
   ['Plain',            'blockDiv',       false, 'switchToBlock', 'isCurrentBlock',   false,                ['div']],
 ];
 
-K3_Ribbon.Drawer.FloatField = {
+K3cms_Ribbon.Drawer.FloatField = {
   fields: ($('<div/>', { class: "field" }).
     append($('<label/>', { text: 'Position', 'data-name': 'float' })).
 
@@ -80,7 +80,7 @@ K3_Ribbon.Drawer.FloatField = {
 }
 
 var drawers = [
-  new K3_Ribbon.Drawer('link_drawer', {
+  new K3cms_Ribbon.Drawer('link_drawer', {
     title: 'Link',
     fields: (
       $('<div/>', { class: "field" }).
@@ -134,7 +134,7 @@ var drawers = [
       a_node.href = this.value_to_update_editable_with();
     }
   }),
-  new K3_Ribbon.Drawer('image_drawer', {
+  new K3cms_Ribbon.Drawer('image_drawer', {
     title: 'Image',
     fields: (
       $('<div/>', { class: "fields" }).
@@ -143,7 +143,7 @@ var drawers = [
           append($('<input/>', { type: 'text', name: 'url', size: 60 }))
         ).
         // The clone is necessary because if you try to append the same $('<element/>') to 2 different targets, the 2nd call *moves* it from the 1st to the 2nd
-        append(K3_Ribbon.Drawer.FloatField.fields.clone())
+        append(K3cms_Ribbon.Drawer.FloatField.fields.clone())
     ),
     get_editable: function() {
       // TODO: push this into core as InlineEditor.Selection.getOnlyContained('img') or some such?
@@ -158,11 +158,11 @@ var drawers = [
     },
     populate_with_defaults: function() {
       this.default_populate_with_defaults();
-      K3_Ribbon.Drawer.FloatField.populate_with_defaults(this.id);
+      K3cms_Ribbon.Drawer.FloatField.populate_with_defaults(this.id);
     },
     populate_from_editable: function(img_node) {
       $('#image_drawer_url').val(img_node.src);
-      K3_Ribbon.Drawer.FloatField.populate_from_editable(this.id, img_node);
+      K3cms_Ribbon.Drawer.FloatField.populate_from_editable(this.id, img_node);
     },
     onCreate: function() {
       // for testing try @86x62:
@@ -176,10 +176,10 @@ var drawers = [
     },
     onUpdate: function(img_node) {
       img_node.src = $('#image_drawer_url').val();
-      K3_Ribbon.Drawer.FloatField.onUpdate(this.id, img_node);
+      K3cms_Ribbon.Drawer.FloatField.onUpdate(this.id, img_node);
     }
   }),
-  new K3_Ribbon.Drawer('video_drawer', {
+  new K3cms_Ribbon.Drawer('video_drawer', {
     title: 'Video',
     fields: (
       $('<div/>', { class: "fields" }).
@@ -203,7 +203,7 @@ var drawers = [
           append($('<input/>', { type: 'text', name: 'height', size: 10 }))
         ).
         // The clone is necessary because if you try to append the same $('<element/>') to 2 different targets, the 2nd call *moves* it from the 1st to the 2nd
-        append(K3_Ribbon.Drawer.FloatField.fields.clone()).
+        append(K3cms_Ribbon.Drawer.FloatField.fields.clone()).
         append($('<p><a href="#" onclick="$(\'.video_drawer.drawer\').data(\'drawer\').set_test_values()">Use a test video</a></p>'))
     ),
     get_editable: function() {
@@ -218,7 +218,7 @@ var drawers = [
     },
     populate_with_defaults: function() {
       this.default_populate_with_defaults();
-      K3_Ribbon.Drawer.FloatField.populate_with_defaults(this.id);
+      K3cms_Ribbon.Drawer.FloatField.populate_with_defaults(this.id);
     },
     populate_from_editable: function(video_node) {
       var h264_tags = $(video_node).find('source[type="video/h264"]');
@@ -228,7 +228,7 @@ var drawers = [
       this.find('#video_drawer_poster_url').val(video_node.poster);
       this.find('#video_drawer_width').val(video_node.width);
       this.find('#video_drawer_height').val(video_node.height);
-      K3_Ribbon.Drawer.FloatField.populate_from_editable(this.id, video_node);
+      K3cms_Ribbon.Drawer.FloatField.populate_from_editable(this.id, video_node);
     },
     onCreate: function() {
       var h264_tag = $('#video_drawer_h264_url').val()   == '' ? '' : '<source src="' + $('#video_drawer_h264_url').val() + '" type="video/h264" />';
@@ -259,7 +259,7 @@ var drawers = [
       video_node.height = $('#video_drawer_height').val();
       video_node.poster = $('#video_drawer_poster_url').val();
       $('#video_drawer_poster_url').val() == '' && $(video_node).removeAttr('poster')
-      K3_Ribbon.Drawer.FloatField.onUpdate(this.id, video_node);
+      K3cms_Ribbon.Drawer.FloatField.onUpdate(this.id, video_node);
     }
   }),
 ];
@@ -313,10 +313,10 @@ Object.keys = Object.keys || (function () {
 })();
 
 //==================================================================================================
-K3_InlineEditor = {
+K3cms_InlineEditor = {
   /*
-   * object_name: for example, 'k3_blog_blog_post'    -- in Rails, you can get this from dom_class(object)
-   * object_id:   for example, 'k3_blog_blog_post_18' -- in Rails, you can get this from dom_id(object)
+   * object_name: for example, 'k3cms_blog_blog_post'    -- in Rails, you can get this from dom_class(object)
+   * object_id:   for example, 'k3cms_blog_blog_post_18' -- in Rails, you can get this from dom_id(object)
    * object:      an object representing the state of the object in the database -- in Rails, you can get this from object.to_json
    * source_element: a jQuery object that selects which element *not* to update from the data in object
    */
@@ -347,11 +347,11 @@ function initInlineEditor(options) {
   $('.editable').inlineEditor(options);
   $('.editable').inlineEditor({
     saving : function(event) {
-      K3_Ribbon.onSaving();
+      K3cms_Ribbon.onSaving();
     },
 
     onChange: function(event) {
-      K3_Ribbon.set_dirty_status(true);
+      K3cms_Ribbon.set_dirty_status(true);
     },
 
     saveSuccess : function(event, data, msg, xhr) {
@@ -386,7 +386,7 @@ function initInlineEditor(options) {
             method = window[object_name].updatePage;
           } else {
             // Default handler
-            method = K3_InlineEditor.updatePageFromObject;
+            method = K3cms_InlineEditor.updatePageFromObject;
           }
           method(object_name, element_data['object-id'], object[object_name], this)
         })
@@ -397,14 +397,14 @@ function initInlineEditor(options) {
   });
 
   //------------------------------------------------------------------------------------------------
-  // Integrate with K3_Ribbon
+  // Integrate with K3cms_Ribbon
 
-  var tab = new K3_Ribbon.Tab('k3_inline_editor', {
+  var tab = new K3cms_Ribbon.Tab('k3cms_inline_editor', {
     label: 'Edit', 
     sections: [
-      new K3_Ribbon.Section('inline_styles', {label: 'Inline styles', items: []}),
-      new K3_Ribbon.Section('insert',        {label: 'Insert', items: []}),
-      new K3_Ribbon.Section('block_styles',  {label: 'Paragraph/block styles', items: []}),
+      new K3cms_Ribbon.Section('inline_styles', {label: 'Inline styles', items: []}),
+      new K3cms_Ribbon.Section('insert',        {label: 'Insert', items: []}),
+      new K3cms_Ribbon.Section('block_styles',  {label: 'Paragraph/block styles', items: []}),
     ],
     onClick: function() {
       InlineEditor.last_focused_element && InlineEditor.last_focused_element.focus();
@@ -417,11 +417,11 @@ function initInlineEditor(options) {
   $(toolbar_options).each(function (index) {
     var toolbar_option = this;
     if (!this['class'].match(/^block/)) {
-      var button = new K3_Ribbon.Button({
+      var button = new K3cms_Ribbon.Button({
         element: $('<li/>', { 'class': "icon button " + this['class'] }).
           append($('<a/>', {title: this.label, href: "javascript:;", html: '&nbsp;'})),
         onMousedown: function() {
-          $(this).k3_ribbon('isEnabled') && $(this).trigger('invoke');
+          $(this).k3cms_ribbon('isEnabled') && $(this).trigger('invoke');
 
           // returning false doesn't cancel losing editor focus in IE, here's a nasty hacky fix!
           if (navigator.userAgent.match(/MSIE/)) {
@@ -490,7 +490,7 @@ function initInlineEditor(options) {
 
   //------------------------------------------------------------------------------------------------
   // Add list of block styles as a drop-down select menu
-  var select_item = new K3_Ribbon.ToolbarItem({
+  var select_item = new K3cms_Ribbon.ToolbarItem({
     element: $('<li/>', {}).
       append($('<select/>', {'class': 'select_block_style'})),
     refresh: function() {
@@ -505,7 +505,7 @@ function initInlineEditor(options) {
         var current_block_style = null;
 
         $(toolbar_options).each(function (index) {
-          var option = $('#k3_ribbon .' + this['class']);
+          var option = $('#k3cms_ribbon .' + this['class']);
           if (this['class'].match(/^block/) && 
             (! editor.isInline() || this.is_inline)
           ) {
@@ -600,7 +600,7 @@ function initInlineEditor(options) {
   });
   */
 
-  $('#k3_ribbon').k3_ribbon({tabs: [tab]})
+  $('#k3cms_ribbon').k3cms_ribbon({tabs: [tab]})
 
   //------------------------------------------------------------------------------------------------
 
@@ -617,7 +617,7 @@ function initInlineEditor(options) {
   // draw javascript-only drawers
 
   $.each(drawers, function(index, drawer) {
-    $('#k3_drawers').append(drawer.render());
+    $('#k3cms_drawers').append(drawer.render());
     drawer.get().bind('open', {drawer: drawer}, function(event) {
       var drawer = event.data.drawer;
       // When the drawer is opened, create the form and populate it from the editable, if possible.
@@ -667,7 +667,7 @@ function refreshButtons() {
     return;
   }
 
-  var ribbon = $('#k3_ribbon').k3_ribbon('get');
+  var ribbon = $('#k3cms_ribbon').k3cms_ribbon('get');
   if (ribbon) {
     ribbon.refresh();
   }
