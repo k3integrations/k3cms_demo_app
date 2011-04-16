@@ -19,9 +19,7 @@
 
   <body>
     <div id="container">
-      <%# TODO: replace with single k3cms_init, or hook :top_of_page or something %>
-      <%= render :file => 'k3cms/pages/init.html.haml' %>
-      <%= render :file => 'k3cms/blog/init.html.haml' %>
+      <%= hook :top_of_page %>
       <% if user_signed_in? -%>
         <% k3cms_ribbon_add_item do %>
           <li><%= link_to 'Sign out', destroy_user_session_path %></li>
@@ -37,9 +35,7 @@
           </ul>
         </div>
       <% end -%>
-      <%# TODO: replace with single k3cms_init %>
-      <%= k3cms_ribbon %>
-
+      <%= hook :ribbon %>
 
       <div id="body">
         <div class="page_fixed_width">
@@ -91,6 +87,5 @@
       </div><!-- #footer-->
 
     </div><!-- #container-->
-    <%= render_cell 'k3cms/inline_editor', :init_edit_mode %>
   </body>
 </html>
