@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 k3cms_gems = %w[
   k3cms
   k3cms_blog
+  k3cms_s3_podcast
 ]
 
 if File.exists?("Gemfile.local")

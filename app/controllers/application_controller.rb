@@ -1,8 +1,6 @@
-require 'k3cms_ribbon'
-
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # TODO: We should not have to list them all individually
-  helper 'k3cms/ribbon/ribbon'
+  # Not necessary the way we're doing things, but allows the file to be reloaded during development
+  helper K3cms::S3Podcast::S3PodcastHelper
 end

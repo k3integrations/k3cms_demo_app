@@ -1,0 +1,121 @@
+/*------------------------------------------------------------------------------------------------*/
+/* common to list and show */
+
+.k3cms_s3_podcast_episode_list .status.unpublished,
+.k3cms_s3_podcast_episode       .status.unpublished {
+  border: 1px solid #A33028;
+  background: #E6554B;
+  color: white;
+}
+.k3cms_s3_podcast_episode_list .status.unpublished {
+}
+.k3cms_s3_podcast_episode .status.unpublished {
+  font-size: 110%;
+}
+
+/*------------------------------------------------------------------------------------------------*/
+/* .k3cms_s3_podcast_episode */
+
+.k3cms_s3_podcast_episode .description {
+  margin: 1em 0;
+}
+
+/*------------------------------------------------------------------------------------------------*/
+/* .k3cms_s3_podcast_episode_list */
+
+.k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode {
+  float: left;
+  padding: 10px 18px 0;
+  /* This is just an invisible placeholder border to keep dimensions uniform. The width here should match that of .k3cms_s3_podcast_episode.new_record */
+  border: 5px solid transparent;
+}
+
+.k3cms_s3_podcast_episode_list #new_k3cms_s3_podcast_episode {
+  display: none;
+}
+
+.k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode.new_record {
+  float: left;
+  border: 5px solid green;
+}
+
+.k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode.unpublished {
+  background: #BDAD69;
+}
+
+/*
+.k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode:nth-child(3n+0) {
+  clear: left;
+}
+
+ * This sort of works, but even elements that are not .k3cms_s3_podcast_episode (such as 1. the New Episode link, the hidden .k3cms_s3_podcast_episode) are counted, so we'd want to change it to 3n+2 to have it start with the first visible .k3cms_s3_podcast_episode
+ * but as soon as child 2 (the hidden .k3cms_s3_podcast_episode) becomes visible, the numbering is off again.
+ * .k3cms_s3_podcast_episode:nth-of-type(3n+1) got us closer, but it doesn't look like CSS has a :visible pseudo-selector.
+ * So apparently even CSS3 isn't powerful enough to solve this problem and we'll have to resort to jQuery.
+
+  %ul
+    %li.hidden 1
+    %li 2
+    %li 3
+    %li 4
+    %li 5
+    %li 6
+    %li 7
+  :javascript
+    // Even with jQuery, we can't use any built-in selector. Their nth-child selector is designed to follow the CSS standard strictly, so it seems to have the same limitations.
+    // This didn't work after adding the .hidden above:
+    //$('.k3cms_s3_podcast_episode_list ul>:visible:nth-child(3n+1)').css('background', 'green')
+    // This did work:
+    $('ul>:visible').filter(function(index) { return index % 3 == 0; }).css('background', 'green')
+*/
+
+.k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode div.thumbnail {
+  margin: 0 0 5px -8px;
+  width: 166px;
+  height: 124px;
+  padding: 10px;
+  background: url(/images/k3cms/s3_podcast/episode_small-thumbnail_bg.png) center no-repeat;
+}
+
+.k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode .title {
+}
+
+.k3cms_s3_podcast_episode + .k3cms_s3_podcast_episode {
+  /*margin-top: 20px;*/
+}
+
+.k3cms_s3_podcast_episode_list .row {
+  clear: left;
+}
+
+/*------------------------------------------------------------------------------------------------*/
+/* Icons */
+.k3cms_s3_podcast li.icon.button a {
+  background: url(/images/k3cms/s3_podcast/icons.png) no-repeat;
+}
+
+.k3cms_s3_podcast li.icon.button.video a              { background-position: 0 -24px;}
+.k3cms_s3_podcast li.icon.button.b2 a                 { background-position: 0 -48px;}
+.k3cms_s3_podcast li.icon.button.list_episodes a      { background-position: 0 -72px;}
+.k3cms_s3_podcast li.icon.button.episode_metadata a   { background-position: 0 -96px;}
+.k3cms_s3_podcast li.icon.button.b5 a                 { background-position: 0 -121px;}
+.k3cms_s3_podcast li.icon.button.b6 a                 { background-position: 0 -144px;}
+.k3cms_s3_podcast li.icon.button.b7 a                 { background-position: 0 -168px;}
+.k3cms_s3_podcast li.icon.button.b8 a                 { background-position: 0 -192px;}
+.k3cms_s3_podcast li.icon.button.b9 a                 { background-position: 0 -384px;}
+.k3cms_s3_podcast li.icon.button.b10 a                { background-position: 0 -408px;}
+.k3cms_s3_podcast li.icon.button.b11 a                { background-position: 0 -430px;}
+.k3cms_s3_podcast li.icon.button.b12 a                { background-position: 0 -454px;}
+.k3cms_s3_podcast li.icon.button.b13 a                { background-position: 0 -502px;}
+.k3cms_s3_podcast li.icon.button.b14 a                { background-position: 0 -526px;}
+.k3cms_s3_podcast li.icon.button.b15 a                { background-position: 0 -552px;}
+.k3cms_s3_podcast li.icon.button.b16 a                { background-position: 0 -574px;}
+.k3cms_s3_podcast li.icon.button.b17 a                { background-position: 0 -598px;}
+.k3cms_s3_podcast li.icon.button.b18 a                { background-position: 0 -624px;}
+.k3cms_s3_podcast li.icon.button.b19 a                { background-position: 0 -648px;}
+.k3cms_s3_podcast li.icon.button.b20 a                { background-position: 0 -672px;}
+.k3cms_s3_podcast li.icon.button.b21 a                { background-position: 0 -696px;}
+.k3cms_s3_podcast li.icon.button.b22 a                { background-position: 0 -720px;}
+.k3cms_s3_podcast li.icon.button.b23 a                { background-position: 0 -744px;}
+
+/*------------------------------------------------------------------------------------------------*/

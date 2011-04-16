@@ -6,3 +6,4 @@ tmp/**/*
 Gemfile.local
 Gemfile.lock
 *.DS_Store
+config/initializers/k3cms_s3_podcast.local.rb
