@@ -140,3 +140,8 @@ Devise.setup do |config|
   #   manager.default_strategies(:scope => :user).unshift :twitter_oauth
   # end
 end
+
+Warden::Manager.before_logout do |user, auth, opts|
+  # Seems to have no effect -- can read it but not change it?
+  auth.request.session['edit_mode'] = false
+end
