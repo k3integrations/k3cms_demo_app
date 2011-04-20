@@ -193,7 +193,7 @@ p + p {
   float: left;
   clear: left;
   text-align: left;
-  width: 600px;
+  /*width: 600px;*/
   margin: 0;
 }
 
