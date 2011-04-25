@@ -1,8 +1,29 @@
 /*------------------------------------------------------------------------------------------------*/
 /* common to list and show */
 
+.k3cms_s3_podcast_episode_list .contextual_ribbon,
+.k3cms_s3_podcast_episode      .contextual_ribbon {
+  background-color: #eee;
+  border: 1px solid #fff;
+  padding: 5px;
+  display: none;
+  z-index: 9999; /* must be on top of "expose" mask */
+}
+
+/* Copied fom inline_editor/public/stylesheets/k3cms/inline_editor.css */
+.edit_mode_on .k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode:hover,
+.edit_mode_on .k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode.active,
+.k3cms_s3_podcast_episode_list .contextual_ribbon,
+.k3cms_s3_podcast_episode      .contextual_ribbon {
+  outline-color: #009000; /* green */
+     -moz-box-shadow: 0 0 12px #009000;
+  -webkit-box-shadow: 0 0 12px #009000;
+          box-shadow: 0 0 12px #009000;
+}
+
+
 .k3cms_s3_podcast_episode_list .status.unpublished,
-.k3cms_s3_podcast_episode       .status.unpublished {
+.k3cms_s3_podcast_episode      .status.unpublished {
   border: 1px solid #A33028;
   background: #E6554B;
   color: white;
@@ -23,18 +44,23 @@
 /*------------------------------------------------------------------------------------------------*/
 /* .k3cms_s3_podcast_episode_list */
 
+.k3cms_s3_podcast_episode_list form {
+  display: inline;
+}
+.k3cms_s3_podcast_episode_list form input {
+  margin: 0;
+}
+
 .k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode {
   float: left;
   padding: 10px 18px 0;
   /* This is just an invisible placeholder border to keep dimensions uniform. The width here should match that of .k3cms_s3_podcast_episode.new_record */
   border: 5px solid transparent;
-}
-
-.k3cms_s3_podcast_episode_list #new_k3cms_s3_podcast_episode {
-  display: none;
+  width: 170px;
 }
 
 .k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode.new_record {
+  display: none;
   float: left;
   border: 5px solid green;
 }
@@ -77,7 +103,8 @@
   background: url(/images/k3cms/s3_podcast/episode_small-thumbnail_bg.png) center no-repeat;
 }
 
-.k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode .title {
+.k3cms_s3_podcast_episode_list .k3cms_s3_podcast_episode div.tags input {
+  width: 100px;
 }
 
 .k3cms_s3_podcast_episode + .k3cms_s3_podcast_episode {

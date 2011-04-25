@@ -40,6 +40,10 @@ k3cms_s3_podcast_episode = {
     }
 
     K3cms_Ribbon.set_saved_status(new Date(object.updated_at));
+  },
+
+  // Given a root element (jQuery object), it will extract the current state of the object from the DOM and return it as a JS object.
+  get_object_from_page: function(root_element) {
   }
 };
 
@@ -51,7 +55,11 @@ k3cms_s3_podcast_episode = {
   $.fn.clear_every_nth_element = function(n) {
     this.css('clear', 'none');
     this.filter(':visible').
-      filter(function(index) { return index % n == 0; }).
+      filter(function(index) {
+        //console.debug("Considering clearing index=", index, ': ', this);
+        //console.debug("clear it? ", (index % n == 0));
+        return index % n == 0;
+      }).
       css('clear', 'left')
 
   };
