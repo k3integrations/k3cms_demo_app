@@ -6,7 +6,7 @@ K3cms_S3Podcast = {
   },
 
   fix_clears: function() {
-    $('.k3cms_s3_podcast_episode_list>.k3cms_s3_podcast_episode').clear_every_nth_element(K3cms_S3Podcast.config.pagination.per_row);
+    $('.k3cms_s3_podcast.episode_list .the_list>.k3cms_s3_podcast_episode.show_small').clear_every_nth_element(K3cms_S3Podcast.config.pagination.per_row);
   },
 }
 
@@ -20,17 +20,32 @@ k3cms_s3_podcast_episode = {
   updatePage: function(object_name, object_id, object, source_element) {
     K3cms_InlineEditor.updatePageFromObject(object_name, object_id, object, source_element)
 
-    // TODO: only update title if page title was originally set to @page.title. Perhaps we should set some JS variable to indicate which object/attribute the page title was taken from?
-    $('title').html(object.title)
+    // TODO: Only update title if page title was originally set to @episode.title. Perhaps we should set some JS variable to indicate which object/attribute the page title was taken from?
+    // For now, assume page title comes from the episode if there's only one episode on the page:
+    if ($('.k3cms_s3_podcast_episode').length == 1) {
+      $('title').html($.sanitizeString(object.title));
+      $('h1 a').html(object.title);
+    }
 
     //$('[data-object=' + object_name + '][data-object-id=' + object_id + '][data-attribute=' + attr_name + ']')
 
-    var container = $('#' + object_id)
+    var container = $('.k3cms_s3_podcast_episode#' + object_id);
+
+    var link = container.find('.download_link a');
+    link.attr('href', object.download_url);
+
     var img = container.find('.thumbnail img');
     img.attr('src', object.thumbnail_image_url);
+
+    var video = container.find('video');
+    video.attr('poster', object.thumbnail_image_url);
+    video.find('source').each(function(i) {
+      // TODO: Update src attribute
+      //$(this).attr('src', '?');
+    });
+
     container.find('.status.unpublished').remove();
     if (object['published?']) {
-      //debugger;
       container.addClass('published').removeClass('unpublished');
     } else {
       container.removeClass('published').addClass('unpublished');
@@ -63,4 +78,14 @@ k3cms_s3_podcast_episode = {
       css('clear', 'left')
 
   };
+
+  // Trim and strip HTML from a string
+  $.sanitizeString = function(s) {
+    var tmp = document.createElement("DIV");
+    tmp.innerHTML = s;
+    s = tmp.textContent || tmp.innerText;
+    return jQuery.trim(s);
+  };
+
 })(jQuery);
+
