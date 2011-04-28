@@ -10,10 +10,11 @@
     <!--[if lt IE 8]>
     <%= stylesheet_link_tag "/blueprint-css/ie.css", :media => "screen, projection" %>
     <![endif]-->
-    <%= stylesheet_link_tag :k3, 'application' %>
+    <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag '/themes/daleri-sweet/styles.css' %>
-    <%= javascript_include_tag :defaults, :k3 %>
+    <%= javascript_include_tag :defaults %>
     <%= javascript_include_tag 'http://html5.kaltura.org/js' unless edit_mode? %>
+    <%= hook :inside_head %>
     <%= csrf_meta_tag %>
   </head>
 
