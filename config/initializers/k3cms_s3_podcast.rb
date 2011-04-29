@@ -1,4 +1,4 @@
-Rails::Application.configure do
+Rails.application.class_eval do
   config.k3cms_s3_podcast_asset_urls = {
     view_url:            "http://bucket-name.s3.amazonaws.com/episodes/{YEAR}/{CODE}.mp4",
     download_url:        "http://bucket-name.s3.amazonaws.com/episodes/{YEAR}/{CODE}.mp4",
