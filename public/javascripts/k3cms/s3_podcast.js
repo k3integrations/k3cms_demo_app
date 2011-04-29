@@ -10,9 +10,53 @@ K3cms_S3Podcast = {
   },
 }
 
+k3cms_s3_podcast_podcast = {
+  url_for: function(object) {
+     return '/podcasts/' + object.id;
+  },
+
+  // FIXME: We shouldn't have to duplicate all this presentation logic between Rails views and JS. Consider moving all views to a JS template library.
+  // Then we can just pass the object to the template and completely re-render it, *replacing* the entire box, instead of trying to figure out which subelements need to be *updated*.
+  updatePage: function(object_name, object_id, object, source_element) {
+    K3cms_InlineEditor.updatePageFromObject(object_name, object_id, object, source_element)
+
+    // TODO: Only update title if page title was originally set to @podcast.title. Perhaps we should set some JS variable to indicate which object/attribute the page title was taken from?
+    // For now, assume page title comes from the podcast if there's only one podcast on the page:
+    if ($('.k3cms_s3_podcast_podcast').length == 1) {
+      $('title').html($.sanitizeString(object.title));
+      $('h1 a').html(object.title);
+    }
+
+    //$('[data-object=' + object_name + '][data-object-id=' + object_id + '][data-attribute=' + attr_name + ']')
+
+    var container = $('.k3cms_s3_podcast_podcast#' + object_id);
+
+    var link = container.find('.download_link a');
+    link.attr('href', object.download_url);
+
+    var img = container.find('.thumbnail img');
+    img.attr('src', object.thumbnail_image_url);
+
+    var video = container.find('video');
+    video.attr('poster', object.thumbnail_image_url);
+    video.find('source').each(function(i) {
+      // TODO: Update src attribute
+      //$(this).attr('src', '?');
+    });
+
+    K3cms_Ribbon.set_saved_status(new Date(object.updated_at));
+  },
+
+  // Given a root element (jQuery object), it will extract the current state of the object from the DOM and return it as a JS object.
+  get_object_from_page: function(root_element) {
+  }
+};
+
+
 k3cms_s3_podcast_episode = {
-  url_for: function(id) {
-     return '/episodes/' + id;
+  url_for: function(object) {
+     console.debug("'/podcasts/' + object.podcast_id + '/episodes/' + object.id=", '/podcasts/' + object.podcast_id + '/episodes/' + object.id);
+     return '/podcasts/' + object.podcast_id + '/episodes/' + object.id;
   },
 
   // FIXME: We shouldn't have to duplicate all this presentation logic between Rails views and JS. Consider moving all views to a JS template library.

@@ -1,3 +1,120 @@
+/*================================================================================================*/
+/* Common */
+
+
+/*================================================================================================*/
+/* Podcasts */
+
+/*------------------------------------------------------------------------------------------------*/
+/* .k3cms_s3_podcast.podcast_list */
+.k3cms_s3_podcast.podcast_list .header {
+  margin-bottom: 20px;
+}
+
+/*------------------------------------------------------------------------------------------------*/
+/* common to show_large and show_small */
+
+.k3cms_s3_podcast_podcast.show_large,
+.k3cms_s3_podcast_podcast.show_small {
+  position: relative;
+}
+
+.context_ribbon,
+.context_ribbon {
+  background-color: #eee;
+  border: 1px solid #fff;
+  padding: 5px;
+  display: none;
+  z-index: 9999; /* must be on top of "expose" mask */
+}
+
+/* Records on the page that *can* be edited but are not yet being edited */
+/* Give a subtle visual hint as to which areas on the screen can be edited */
+.edit_mode_on .k3cms_s3_podcast_podcast.show_small,
+.edit_mode_on .k3cms_s3_podcast_podcast.show_small,
+.edit_mode_on .k3cms_s3_podcast_podcast.show_large,
+.edit_mode_on .k3cms_s3_podcast_podcast.show_large {
+     -moz-box-shadow: 0 0 12px #ddd;
+  -webkit-box-shadow: 0 0 12px #ddd;
+          box-shadow: 0 0 12px #ddd;
+}
+
+/* Records that you hover over or are actively editing */ 
+/* Copied fom inline_editor/public/stylesheets/k3cms/inline_editor.css -- keep in sync */
+.edit_mode_on .k3cms_s3_podcast_podcast.show_small:hover,
+.edit_mode_on .k3cms_s3_podcast_podcast.show_small.active,
+.edit_mode_on .k3cms_s3_podcast_podcast.show_large:hover,
+.edit_mode_on .k3cms_s3_podcast_podcast.show_large.active,
+.context_ribbon,
+.context_ribbon {
+  outline-color: #009000; /* green */
+     -moz-box-shadow: 0 0 12px #009000;
+  -webkit-box-shadow: 0 0 12px #009000;
+          box-shadow: 0 0 12px #009000;
+}
+
+.k3cms_s3_podcast_podcast.show_large .editor_links,
+.k3cms_s3_podcast_podcast.show_small .editor_links {
+  clear: both;
+}
+
+.k3cms_s3_podcast_podcast form {
+  display: inline;
+}
+.k3cms_s3_podcast_podcast form input {
+  margin: 0;
+}
+
+/*------------------------------------------------------------------------------------------------*/
+/* .k3cms_s3_podcast_podcast.show_large */
+
+.k3cms_s3_podcast_podcast.show_large {
+  padding: 5px;
+}
+
+.k3cms_s3_podcast_podcast.show_large .description {
+  margin: 1em 0;
+}
+
+/*------------------------------------------------------------------------------------------------*/
+/* .k3cms_s3_podcast_podcast.show_small */
+
+.k3cms_s3_podcast_podcast.show_small {
+  float: left;
+  clear: left;
+  padding: 10px 18px 0;
+  background-color: white;
+  /* This is just an invisible placeholder border to keep dimensions uniform. The width here should match that of .k3cms_s3_podcast_podcast.new_record */
+  border: 5px solid transparent;
+  width: 600px;
+}
+
+.k3cms_s3_podcast_podcast.show_small.new_record {
+  display: none;
+  border: 5px solid green;
+}
+
+.k3cms_s3_podcast_podcast.show_small .video_player {
+  margin: 0 0 5px -8px;
+  width: 352px;
+  height: 265px;
+  padding: 20px 0px 20px 20px;
+  background: url(/images/k3cms/s3_podcast/video_player_large_bg.png) center no-repeat;
+}
+
+.k3cms_s3_podcast_podcast.show_small .k3cms_s3_podcast_podcast div.tags input {
+  width: 100px;
+}
+
+.k3cms_s3_podcast_podcast.show_small.visible +
+.k3cms_s3_podcast_podcast.show_small.visible {
+  margin-top: 20px;
+}
+
+
+/*================================================================================================*/
+/* Episodes */
+
 /*------------------------------------------------------------------------------------------------*/
 /* .k3cms_s3_podcast.episode_list */
 .k3cms_s3_podcast.episode_list .header {
@@ -9,6 +126,7 @@
 
 .k3cms_s3_podcast_episode.show_large,
 .k3cms_s3_podcast_episode.show_small {
+  background-color: white;
   position: relative;
 }
 
@@ -89,7 +207,6 @@
 
 .k3cms_s3_podcast_episode.show_small.new_record {
   display: none;
-  float: left;
   border: 5px solid green;
 }
 
@@ -109,11 +226,7 @@
   width: 100px;
 }
 
-.k3cms_s3_podcast_episode + .k3cms_s3_podcast_episode {
-  /*margin-top: 20px;*/
-}
-
-/*------------------------------------------------------------------------------------------------*/
+/*================================================================================================*/
 /* Icons */
 .k3cms_s3_podcast li.icon.button a {
   background: url(/images/k3cms/s3_podcast/icons.png) no-repeat;
@@ -143,4 +256,4 @@
 .k3cms_s3_podcast li.icon.button.b22 a                { background-position: 0 -720px;}
 .k3cms_s3_podcast li.icon.button.b23 a                { background-position: 0 -744px;}
 
-/*------------------------------------------------------------------------------------------------*/
+/*================================================================================================*/

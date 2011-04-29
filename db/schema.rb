@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110418152258) do
+ActiveRecord::Schema.define(:version => 20110427221203) do
 
   create_table "k3cms_blog_blog_posts", :force => true do |t|
     t.string   "title"
@@ -48,6 +48,20 @@ ActiveRecord::Schema.define(:version => 20110418152258) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
+    t.integer  "podcast_id"
+  end
+
+  add_index "k3cms_s3_podcast_episodes", ["podcast_id"], :name => "index_k3cms_s3_podcast_episodes_on_podcast_id"
+
+  create_table "k3cms_s3_podcast_podcasts", :force => true do |t|
+    t.string   "title"
+    t.string   "media_type"
+    t.string   "url"
+    t.text     "description"
+    t.text     "summary"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "slugs", :force => true do |t|
@@ -84,7 +98,6 @@ ActiveRecord::Schema.define(:version => 20110418152258) do
     t.string   "last_name",                           :default => "", :null => false
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
