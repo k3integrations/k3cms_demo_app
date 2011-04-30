@@ -10,6 +10,8 @@ Rails.application.class_eval do
   config.k3cms_s3_podcast_pagination = {
     :per_row => 3, :per_page => 12
   }
+  config.k3cms_s3_index_view = :tiles
+  config.k3cms_s3_show_view  = :page
 
   config.k3cms_s3_podcast_title       = 'Podcast title'
   config.k3cms_s3_podcast_link_url    = 'http://example.com/'

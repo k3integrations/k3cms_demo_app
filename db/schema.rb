@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110427221203) do
+ActiveRecord::Schema.define(:version => 20110429230531) do
 
   create_table "k3cms_blog_blog_posts", :force => true do |t|
     t.string   "title"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20110427221203) do
     t.string   "code"
     t.text     "description"
     t.integer  "view_count"
-    t.date     "published_at"
+    t.date     "display_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20110427221203) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "publish_days_in_advance_of_display_date"
   end
 
   create_table "slugs", :force => true do |t|

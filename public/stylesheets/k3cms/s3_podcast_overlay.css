@@ -1,0 +1,26 @@
+.s3_podcast_overlay {
+  display:none;
+  background-image:url(http://static.flowplayer.org/img/overlay/white.png);
+  width:640px;		
+  padding:35px;
+  font-size:11px;
+}
+
+.s3_podcast_overlay .close {
+  background-image:url(http://static.flowplayer.org/img/overlay/close.png);
+  position:absolute; right:5px; top:5px;
+  cursor:pointer;
+  height:35px;
+  width:35px;
+}
+
+#s3_overlay {
+  background-image:url(http://static.flowplayer.org/img/overlay/transparent.png);
+  color:#efefef;
+  height:450px;
+}
+
+div.contentWrap {
+  height:441px;
+  overflow-y:auto;
+}
