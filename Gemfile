@@ -20,11 +20,11 @@ end
 k3cms_gems.each do |gem_name|
   # Avoid conflicts with gems specified in Gemfile.local
   unless find_gem(gem_name)
-    gem gem_name
+    gem gem_name, :git => "git@github.com:k3integrations/#{gem_name}.git"
   end
 end
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.7'
 gem 'devise' unless find_gem('devise')
 gem 'ruby-debug19'
 
