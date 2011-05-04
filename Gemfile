@@ -4,6 +4,7 @@ k3cms_gems = %w[
   k3cms
   k3cms_blog
   k3cms_s3_podcast
+  k3cms_trivial_authorization
 ]
 
 if File.exists?("Gemfile.local")
