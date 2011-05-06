@@ -1,0 +1,33 @@
+/* Overrides for public/stylesheets/k3cms/jquery.jplayer/jplayer.blue.monday.css */
+
+/* Shrink audio player so it will fit in a smaller box */
+.k3cms_s3_podcast_podcast.show_small div.jp-audio {
+  width: 350px; /* override 420px */
+}
+
+/* Move all controls left by 20px */
+.k3cms_s3_podcast_podcast.show_small div.jp-audio div.jp-type-single a.jp-play,
+.k3cms_s3_podcast_podcast.show_small div.jp-audio div.jp-type-single a.jp-pause {
+  left: 20px; /* 40px */
+}
+.k3cms_s3_podcast_podcast.show_small div.jp-audio div.jp-type-single a.jp-stop {
+  left: 70px; /* 90px */
+}
+.k3cms_s3_podcast_podcast.show_small div.jp-audio div.jp-type-single div.jp-progress {
+	left: 110px; /* 130px */
+}
+.k3cms_s3_podcast_podcast.show_small div.jp-audio div.jp-type-single div.jp-current-time,
+.k3cms_s3_podcast_podcast.show_small div.jp-audio div.jp-type-single div.jp-duration {
+	left: 110px; /* 130px */
+}
+.k3cms_s3_podcast_podcast.show_small div.jp-audio div.jp-type-single div.jp-volume-bar {
+	left: 282px; /* 302px */
+}
+.k3cms_s3_podcast_podcast.show_small div.jp-audio div.jp-type-single a.jp-mute,
+.k3cms_s3_podcast_podcast.show_small div.jp-audio div.jp-type-single a.jp-unmute {
+	left: 254px; /* 274px */
+}
+
+.k3cms_s3_podcast_podcast.show_small div.audio_player {
+  margin-bottom: 10px;
+}

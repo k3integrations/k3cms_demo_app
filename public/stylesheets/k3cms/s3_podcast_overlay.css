@@ -1,26 +1,31 @@
-.s3_podcast_overlay {
-  display:none;
-  background-image:url(http://static.flowplayer.org/img/overlay/white.png);
-  width:640px;		
-  padding:35px;
-  font-size:11px;
+.k3cms_s3_podcast_overlay {
+  display: none;
+  z-index: 10000;
+  background-color: #333;
+
+  width: 675px;	
+  min-height: 200px;
+  border: 1px solid #666;
+
+  -moz-box-shadow: 0 0 90px 5px #000;
+  -webkit-box-shadow: 0 0 90px #000;	
+  box-shadow: 0 0 90px #000;	
 }
 
-.s3_podcast_overlay .close {
-  background-image:url(http://static.flowplayer.org/img/overlay/close.png);
-  position:absolute; right:5px; top:5px;
-  cursor:pointer;
-  height:35px;
-  width:35px;
+.k3cms_s3_podcast_overlay .close {
+  background-image: url(/images/k3cms/s3_podcast/overlay/close.png);
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+  z-index: 100;
 }
 
-#s3_overlay {
-  background-image:url(http://static.flowplayer.org/img/overlay/transparent.png);
-  color:#efefef;
-  height:450px;
+/*
+.k3cms_s3_podcast_overlay .content {
+  height: 441px;
+  overflow-y: auto;
 }
-
-div.contentWrap {
-  height:441px;
-  overflow-y:auto;
-}
+*/

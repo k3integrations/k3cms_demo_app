@@ -5,8 +5,12 @@ K3cms_S3Podcast = {
     },
   },
 
+  update_row_striping: function() {
+    $('.k3cms_s3_podcast.episode_list table tbody tr:visible:not(.header)').update_row_striping();
+  },
+
   fix_clears: function() {
-    $('.k3cms_s3_podcast.episode_list .the_list>.k3cms_s3_podcast_episode.show_small').clear_every_nth_element(K3cms_S3Podcast.config.pagination.per_row);
+    $('.k3cms_s3_podcast.episode_list .the_list>.k3cms_s3_podcast_episode.tile').clear_every_nth_element(K3cms_S3Podcast.config.pagination.per_row);
   },
 }
 
@@ -31,19 +35,6 @@ k3cms_s3_podcast_podcast = {
 
     var container = $('.k3cms_s3_podcast_podcast#' + object_id);
 
-    var link = container.find('.download_link a');
-    link.attr('href', object.download_url);
-
-    var img = container.find('.thumbnail img');
-    img.attr('src', object.thumbnail_image_url);
-
-    var video = container.find('video');
-    video.attr('poster', object.thumbnail_image_url);
-    video.find('source').each(function(i) {
-      // TODO: Update src attribute
-      //$(this).attr('src', '?');
-    });
-
     K3cms_Ribbon.set_saved_status(new Date(object.updated_at));
   },
 
@@ -55,7 +46,6 @@ k3cms_s3_podcast_podcast = {
 
 k3cms_s3_podcast_episode = {
   url_for: function(object) {
-     console.debug("'/podcasts/' + object.podcast_id + '/episodes/' + object.id=", '/podcasts/' + object.podcast_id + '/episodes/' + object.id);
      return '/podcasts/' + object.podcast_id + '/episodes/' + object.id;
   },
 
@@ -74,6 +64,11 @@ k3cms_s3_podcast_episode = {
     //$('[data-object=' + object_name + '][data-object-id=' + object_id + '][data-attribute=' + attr_name + ']')
 
     var container = $('.k3cms_s3_podcast_episode#' + object_id);
+    if (container.is('tr')) {
+      var style = 'table';
+    } else {
+      var style = 'tiles';
+    }
 
     var link = container.find('.download_link a');
     link.attr('href', object.download_url);
@@ -82,7 +77,7 @@ k3cms_s3_podcast_episode = {
     img.attr('src', object.thumbnail_image_url);
 
     var video = container.find('video');
-    video.attr('poster', object.thumbnail_image_url);
+    video.attr('poster', K3cms_S3Podcast.config.video_tag_options.poster || object.thumbnail_image_url);
     video.find('source').each(function(i) {
       // TODO: Update src attribute
       //$(this).attr('src', '?');
@@ -94,8 +89,10 @@ k3cms_s3_podcast_episode = {
     } else {
       container.removeClass('published').addClass('unpublished');
       container.find('.status.unpublished').remove();
-      // Duplicated with app/cells/k3cms/s3_podcast/episodes/published_status.html.haml
-      container.find('.title').after($('<div>', {'class': 'status unpublished', text: 'Not yet published'}))
+      if (style == 'tiles') {
+        // Duplicated with app/cells/k3cms/s3_podcast/episodes/published_status.html.haml
+        container.find('.title').after($('<div>', {'class': 'status unpublished', text: 'Not yet published'}))
+      }
     }
 
     K3cms_Ribbon.set_saved_status(new Date(object.updated_at));
@@ -122,6 +119,22 @@ k3cms_s3_podcast_episode = {
       css('clear', 'left')
 
   };
+
+  // Call this after you delete an item from a table with alternating row colors so that you don't
+  // end up with two consecutive "odd" classes, for example.
+  // $('table tbody tr:visible:not(.header)').update_row_striping()
+  $.fn.update_row_striping = function() {
+    this.each(function(index) {
+      $(this).removeClass('even')
+      $(this).removeClass('odd')
+      if (index % 2) {
+        $(this).addClass('even')
+      } else {
+        $(this).addClass('odd')
+      }
+    })
+  }
+
 
   // Trim and strip HTML from a string
   $.sanitizeString = function(s) {

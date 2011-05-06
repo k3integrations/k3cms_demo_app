@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110429230531) do
+ActiveRecord::Schema.define(:version => 20110505221600) do
 
   create_table "k3cms_blog_blog_posts", :force => true do |t|
     t.string   "title"
@@ -44,25 +44,29 @@ ActiveRecord::Schema.define(:version => 20110429230531) do
     t.string   "code"
     t.text     "description"
     t.integer  "view_count"
-    t.date     "display_date"
+    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
     t.integer  "podcast_id"
+    t.string   "author_name"
   end
 
   add_index "k3cms_s3_podcast_episodes", ["podcast_id"], :name => "index_k3cms_s3_podcast_episodes_on_podcast_id"
 
   create_table "k3cms_s3_podcast_podcasts", :force => true do |t|
     t.string   "title"
-    t.string   "media_type"
-    t.string   "url"
     t.text     "description"
     t.text     "summary"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "publish_days_in_advance_of_display_date"
+    t.integer  "publish_episodes_days_in_advance_of_date"
+    t.text     "episode_source_urls"
+    t.string   "episode_image_url"
+    t.string   "icon_url"
+    t.string   "logo_url"
+    t.text     "rights"
   end
 
   create_table "slugs", :force => true do |t|
