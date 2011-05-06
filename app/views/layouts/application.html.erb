@@ -15,7 +15,7 @@
     <%= javascript_include_tag :defaults %>
     <%= javascript_include_tag 'http://html5.kaltura.org/js' unless edit_mode? %>
     <%= csrf_meta_tag %>
-    <%= hook :inside_head %>
+    <%= hook :head %>
     <%= content_for :head %>
   </head>
 
