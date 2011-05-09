@@ -4,7 +4,6 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 Gemfile.local
-Gemfile.lock
 *.DS_Store
 config/initializers/k3cms_s3_podcast.local.rb
 config/database.yml
