@@ -25,7 +25,7 @@ k3cms_gems.each do |gem_name|
   end
 end
 
-gem 'rails', '3.0.7'
+gem 'rails', '~> 3.0.7'
 gem 'devise' unless find_gem('devise')
 gem 'ruby-debug19'
 
@@ -38,11 +38,6 @@ end
 group :development, :test do
   gem 'sqlite3'
 end
-
-# TODO: these should be in the k3cms gemspec
-#gem 'haml'
-#gem 'haml-rails'
-#gem 'validates_timeliness', :git => 'git://github.com/adzap/validates_timeliness.git'
 
 group :test do
   gem "rspec-rails"
