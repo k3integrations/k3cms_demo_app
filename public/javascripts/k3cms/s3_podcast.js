@@ -1,8 +1,8 @@
 K3cms_S3Podcast = {
   config: {
     pagination: {
-      per_row: 4,
-    },
+      per_row: 4
+    }
   },
 
   update_row_striping: function() {
@@ -11,7 +11,7 @@ K3cms_S3Podcast = {
 
   fix_clears: function() {
     $('.k3cms_s3_podcast.episode_list .the_list>.k3cms_s3_podcast_episode.tile').clear_every_nth_element(K3cms_S3Podcast.config.pagination.per_row);
-  },
+  }
 }
 
 k3cms_s3_podcast_podcast = {

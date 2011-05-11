@@ -43,17 +43,17 @@ toolbar_options = [
 ];
 
 K3cms_Ribbon.Drawer.FloatField = {
-  fields: ($('<div/>', { class: "field" }).
+  fields: ($('<div/>', { 'class': "field" }).
     append($('<label/>', { text: 'Position', 'data-name': 'float' })).
 
     append($('<input/>', { type: 'radio', name: 'float', value: 'none', id: 'float_none' })).
-    append($('<label/>', { text: 'Inline', for: 'float_none' })).
+    append($('<label/>', { text: 'Inline', 'for': 'float_none' })).
 
     append($('<input/>', { type: 'radio', name: 'float', value: 'left', id: 'float_float_left' })).
-    append($('<label/>', { text: 'Float Left', for: 'float_float_left' })).
+    append($('<label/>', { text: 'Float Left', 'for': 'float_float_left' })).
 
     append($('<input/>', { type: 'radio', name: 'float', value: 'right', id: 'float_float_right' })).
-    append($('<label/>', { text: 'Float Right', for: 'float_float_right' }))
+    append($('<label/>', { text: 'Float Right', 'for': 'float_float_right' }))
   ),
   populate_with_defaults: function(drawer_id) {
     $('#' + drawer_id + ' input:radio[name=float][value=' + 'right' + ']').attr('checked', true)
@@ -83,7 +83,7 @@ var drawers = [
   new K3cms_Ribbon.Drawer('link_drawer', {
     title: 'Link',
     fields: (
-      $('<div/>', { class: "field" }).
+      $('<div/>', { 'class': "field" }).
         append($('<label/>', { text: 'URL', 'data-name': 'url' })).
         append($('<input/>', { type: 'text', size: 30, name: 'url' }))
     ),
@@ -137,8 +137,8 @@ var drawers = [
   new K3cms_Ribbon.Drawer('image_drawer', {
     title: 'Image',
     fields: (
-      $('<div/>', { class: "fields" }).
-        append($('<div/>', { class: "field" }).
+      $('<div/>', { 'class': "fields" }).
+        append($('<div/>', { 'class': "field" }).
           append($('<label/>', { text: 'Image URL', 'data-name': 'url' })).
           append($('<input/>', { type: 'text', name: 'url', size: 60 }))
         ).
@@ -182,21 +182,21 @@ var drawers = [
   new K3cms_Ribbon.Drawer('video_drawer', {
     title: 'Video',
     fields: (
-      $('<div/>', { class: "fields" }).
+      $('<div/>', { 'class': "fields" }).
         append($('<p>Because there is no single video format that works in all web browsers, you should at a minimum provide these two formats. (See <a href="http://diveintohtml5.org/video.html#what-works">http://diveintohtml5.org/video.html#what-works</a> for more details.)</p>')).
-        append($('<div/>', { class: "field" }).
+        append($('<div/>', { 'class': "field" }).
           append($('<label/>', { text: 'MP4 H.264/AAC Format URL' })).
           append($('<input/>', { type: 'text', name: 'h264_url', size: 60 }))
         ).
-        append($('<div/>', { class: "field" }).
+        append($('<div/>', { 'class': "field" }).
           append($('<label/>', { text: 'Ogg Theora/Vorbis Format URL' })).
           append($('<input/>', { type: 'text', name: 'ogg_url', size: 60 }))
         ).
-        append($('<div/>', { class: "field" }).
+        append($('<div/>', { 'class': "field" }).
           append($('<label/>', { text: 'Poster image URL' })).
           append($('<input/>', { type: 'text', name: 'poster_url', size: 60 }))
         ).
-        append($('<div/>', { class: "fields" }).
+        append($('<div/>', { 'class': "fields" }).
           append($('<label/>', { text: 'Width' })).
           append($('<input/>', { type: 'text', name: 'width', size: 10 })).
           append($('<label/>', { text: 'Height' })).
