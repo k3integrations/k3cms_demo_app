@@ -51,8 +51,8 @@
 /* Podcasts */
 
 /*------------------------------------------------------------------------------------------------*/
-/* .k3cms_s3_podcast.podcast_list */
-.k3cms_s3_podcast.podcast_list .header {
+/* .k3cms_s3_podcast_podcast_list */
+.k3cms_s3_podcast_podcast_list .header {
   margin-bottom: 20px;
 }
 
@@ -137,12 +137,12 @@
 /* Episodes */
 
 /*------------------------------------------------------------------------------------------------*/
-/* .k3cms_s3_podcast.episode_list */
-.k3cms_s3_podcast.episode_list .header {
+/* .k3cms_s3_podcast_episode_list */
+.k3cms_s3_podcast_episode_list .header {
   margin-bottom: 20px;
 }
 
-.k3cms_s3_podcast.episode_list table {
+.k3cms_s3_podcast_episode_list table {
   width: 100%;
 }
 

@@ -6,11 +6,11 @@ K3cms_S3Podcast = {
   },
 
   update_row_striping: function() {
-    $('.k3cms_s3_podcast.episode_list table tbody tr:visible:not(.header)').update_row_striping();
+    $('.k3cms_s3_podcast_episode_list tbody tr:visible:not(.header)').update_row_striping();
   },
 
   fix_clears: function() {
-    $('.k3cms_s3_podcast.episode_list .the_list>.k3cms_s3_podcast_episode.tile').clear_every_nth_element(K3cms_S3Podcast.config.pagination.per_row);
+    $('.k3cms_s3_podcast_episode_list .the_list>.k3cms_s3_podcast_episode.tile').clear_every_nth_element(K3cms_S3Podcast.config.pagination.per_row);
   }
 }
 
@@ -47,6 +47,16 @@ k3cms_s3_podcast_podcast = {
 k3cms_s3_podcast_episode = {
   url_for: function(object) {
      return '/podcasts/' + object.podcast_id + '/episodes/' + object.id;
+  },
+
+  onRecordBoxOpen: function() {
+    K3cms_S3Podcast.update_row_striping();
+    K3cms_S3Podcast.fix_clears();
+  },
+
+  onRecordBoxClose: function() {
+    K3cms_S3Podcast.update_row_striping();
+    K3cms_S3Podcast.fix_clears();
   },
 
   // FIXME: We shouldn't have to duplicate all this presentation logic between Rails views and JS. Consider moving all views to a JS template library.
