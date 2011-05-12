@@ -1,4 +1,4 @@
 require 'pathname'
-gem 'k3cms',            :path => Pathname.new(__FILE__).dirname + '../'
-gem 'k3cms_blog',       :path => Pathname.new(__FILE__).dirname + '../blog'
-gem 'k3cms_s3_podcast', :path => Pathname.new(__FILE__).dirname + '../s3_podcast'
+k3cms_gems.each do |gem_name|
+  gem gem_name,           :path => Pathname.new(__FILE__).dirname + '../'
+end
