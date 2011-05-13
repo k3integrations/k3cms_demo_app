@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git@github.com:k3integrations/k3cms.git
-  revision: 60a623d071d13e342ee96fe3055938b25f08d995
+  revision: a4f1a176ef3ce0f32bad1bad7ec41266bc5e5767
   specs:
     k3cms (0.1.3)
       k3cms_authorization
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: git@github.com:k3integrations/k3cms_blog.git
-  revision: bd4687596680c27344eddc920de172860322f0f5
+  revision: d69fe3aac629a6fb457c1d8b1a740a0baf96fce7
   specs:
     k3cms_blog (0.1.0)
       actionpack (~> 3.0.0)
@@ -64,8 +64,22 @@ GIT
       validates_timeliness
 
 GIT
+  remote: git@github.com:k3integrations/k3cms_contact_form.git
+  revision: 5a219568814309d3910cf43ecf181ac43be74197
+  specs:
+    k3cms_contact_form (0.0.1)
+      actionpack (~> 3.0.0)
+      activerecord (~> 3.0.0)
+      attribute_normalizer
+      cells
+      facets
+      k3cms_core
+      mail_form
+      rails (~> 3.0.0)
+
+GIT
   remote: git@github.com:k3integrations/k3cms_s3_podcast.git
-  revision: 32cddf463c1186fd828e97c132b01b2bfeb03ac9
+  revision: 613ff8d1542116d0ee4a587b8dfd3ec40159f259
   specs:
     k3cms_s3_podcast (0.0.1)
       actionpack (~> 3.0.0)
@@ -78,12 +92,13 @@ GIT
       facets
       k3cms_core
       k3cms_ribbon
+      kaminari
       rails (~> 3.0.0)
       validates_timeliness
 
 GIT
   remote: git@github.com:k3integrations/k3cms_trivial_authorization.git
-  revision: ce724215cf5ff2f7a04ca2f9e9695a68c8d20a6d
+  revision: 455cdd89e65d24b5e596896bd7b9cb411ccf98bc
   specs:
     k3cms_trivial_authorization (0.1.0)
       k3cms_core
@@ -126,7 +141,7 @@ GEM
       builder
       mime-types
       xml-simple
-    babosa (0.3.3)
+    babosa (0.3.4)
     bcrypt-ruby (2.1.4)
     best_in_place (0.1.9)
       rails (~> 3.0.0)
@@ -186,6 +201,8 @@ GEM
     i18n (0.5.0)
     json (1.5.1)
     json_pure (1.5.1)
+    kaminari (0.12.4)
+      rails (>= 3.0.0)
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -196,6 +213,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mail_form (1.3.0)
     mime-types (1.16)
     mysql2 (0.2.7)
     net-scp (1.0.4)
@@ -265,8 +283,8 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.27)
-    validates_timeliness (3.0.5)
-      timeliness (~> 0.3.2)
+    validates_timeliness (3.0.6)
+      timeliness (~> 0.3.3)
     warden (1.0.4)
       rack (>= 1.0)
     xml-simple (1.0.15)
@@ -286,6 +304,7 @@ DEPENDENCIES
   exception_notification!
   k3cms!
   k3cms_blog!
+  k3cms_contact_form!
   k3cms_s3_podcast!
   k3cms_trivial_authorization!
   launchy

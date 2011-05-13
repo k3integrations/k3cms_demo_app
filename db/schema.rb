@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505221600) do
+ActiveRecord::Schema.define(:version => 20110512010101) do
 
   create_table "k3cms_blog_blog_posts", :force => true do |t|
     t.string   "title"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(:version => 20110505221600) do
   end
 
   add_index "k3cms_blog_blog_posts", ["cached_slug"], :name => "index_k3_blog_blog_posts_on_cached_slug", :unique => true
+
+  create_table "k3cms_contact_forms", :force => true do |t|
+    t.string   "title"
+    t.string   "header"
+    t.string   "recipient_email"
+    t.boolean  "show_subject_field", :default => true
+    t.integer  "page_id"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "k3cms_pages", :force => true do |t|
     t.string   "title"

@@ -1,9 +1,20 @@
 /*================================================================================================*/
 /* Common */
 
-
 /*================================================================================================*/
-.new_k3cms_contact_form_contact input.disregard {
+/* contact form */
+
+.new_k3cms_contact_form_contact .field {
+  margin-bottom: 10px;
+}
+.new_k3cms_contact_form_contact .field + .field {
+  margin-top: 10px;
+}
+.new_k3cms_contact_form_contact .field label {
+  display: block;
+}
+
+.new_k3cms_contact_form_contact .disregard {
   display: none;
 }
 
@@ -44,6 +55,90 @@
 }
 
 /*================================================================================================*/
+/* ContactForms */
+
+/*------------------------------------------------------------------------------------------------*/
+/* .k3cms_contact_form.contact_form_list */
+.k3cms_contact_form.contact_form_list .header {
+  margin-bottom: 20px;
+}
+
+/*------------------------------------------------------------------------------------------------*/
+/* .k3cms_contact_form_contact_form.show */
+
+.k3cms_contact_form_contact_form.show {
+  position: relative;
+  float: left;
+  clear: left;
+  padding: 10px 18px 0;
+  background-color: white;
+  /* This is just an invisible placeholder border to keep dimensions uniform. The width here should match that of .k3cms_contact_form_contact_form.new_record */
+  border: 5px solid transparent;
+  width: 600px;
+}
+
+.k3cms_contact_form_contact_form.show.new_record {
+  display: none;
+  border: 5px solid green;
+}
+
+.k3cms_contact_form_contact_form.show .video_player {
+  margin: 0 0 5px -20px;
+  width: 352px;
+  height: 265px;
+  padding: 18px 0px 10px 20px;
+  background: url(/images/k3cms/contact_form/video_player_large_bg.png) top left no-repeat;
+}
+
+.k3cms_contact_form_contact_form.show>.left {
+  float: left;
+  width: 200px;
+}
+
+.k3cms_contact_form_contact_form.show>.right {
+  float: right;
+  width: 390px;
+  padding-left: 10px;
+}
+
+.k3cms_contact_form_contact_form.show {
+     -moz-box-shadow: 0 0 12px #ddd;
+  -webkit-box-shadow: 0 0 12px #ddd;
+          box-shadow: 0 0 12px #ddd;
+}
+
+/* Records that you hover over or are actively editing */ 
+/* Copied fom inline_editor/public/stylesheets/k3cms/inline_editor.css -- keep in sync */
+.edit_mode_on .k3cms_contact_form_contact_form.show:hover,
+.edit_mode_on .k3cms_contact_form_contact_form.show.active,
+.context_ribbon,
+.context_ribbon {
+  outline-color: #009000; /* green */
+     -moz-box-shadow: 0 0 12px #009000;
+  -webkit-box-shadow: 0 0 12px #009000;
+          box-shadow: 0 0 12px #009000;
+}
+
+.k3cms_contact_form_contact_form.show .editor_links {
+  clear: both;
+}
+
+.k3cms_contact_form_contact_form form {
+  display: inline;
+}
+.k3cms_contact_form_contact_form form input {
+  margin: 0;
+}
+
+.k3cms_contact_form_contact_form.show .k3cms_contact_form_contact_form div.tags input {
+  width: 100px;
+}
+
+.k3cms_contact_form_contact_form.show.existing_record +
+.k3cms_contact_form_contact_form.show.existing_record {
+  margin-top: 20px;
+}
+
 
 /*================================================================================================*/
 /* Icons */

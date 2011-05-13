@@ -127,8 +127,8 @@
   width: 100px;
 }
 
-.k3cms_s3_podcast_podcast.show_small.visible +
-.k3cms_s3_podcast_podcast.show_small.visible {
+.k3cms_s3_podcast_podcast.show_small.record_exists +
+.k3cms_s3_podcast_podcast.show_small.record_exists {
   margin-top: 20px;
 }
 
