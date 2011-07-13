@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git@github.com:k3integrations/k3cms.git
-  revision: a4f1a176ef3ce0f32bad1bad7ec41266bc5e5767
+  revision: a87a8d81f15dcfacfed7d546a6451ad38f1b6ec5
   specs:
     k3cms (0.1.3)
       k3cms_authorization
@@ -14,6 +14,7 @@ GIT
       k3cms_inline_editor
       k3cms_pages
       k3cms_ribbon
+      rake (= 0.8.7)
     k3cms_authorization (0.1.3)
       activesupport (~> 3.0.0)
       k3cms_core
@@ -34,7 +35,7 @@ GIT
       cancan
       cells
       facets
-      haml (= 3.0.25)
+      haml (~> 3.1.2)
       k3cms_authorization
       k3cms_core
       rails (~> 3.0.0)
@@ -42,13 +43,13 @@ GIT
       activerecord (~> 3.0.0)
       cells
       facets
-      haml (= 3.0.25)
+      haml (~> 3.1.2)
       k3cms_core
       rails (~> 3.0.0)
 
 GIT
   remote: git@github.com:k3integrations/k3cms_blog.git
-  revision: d69fe3aac629a6fb457c1d8b1a740a0baf96fce7
+  revision: 44d17c049bbb2d6870aec2955f3b455349f9c3cf
   specs:
     k3cms_blog (0.1.0)
       actionpack (~> 3.0.0)
@@ -65,7 +66,7 @@ GIT
 
 GIT
   remote: git@github.com:k3integrations/k3cms_contact_form.git
-  revision: 5a219568814309d3910cf43ecf181ac43be74197
+  revision: 1226a13cc5139ffc28edd1e3073ddcb5ff987fa2
   specs:
     k3cms_contact_form (0.0.1)
       actionpack (~> 3.0.0)
@@ -79,7 +80,7 @@ GIT
 
 GIT
   remote: git@github.com:k3integrations/k3cms_s3_podcast.git
-  revision: 613ff8d1542116d0ee4a587b8dfd3ec40159f259
+  revision: 646e3cc6af276f671e3d13c92fba44d45a3bfae9
   specs:
     k3cms_s3_podcast (0.0.1)
       actionpack (~> 3.0.0)
@@ -107,12 +108,12 @@ GEM
   remote: http://rubygems.org/
   specs:
     abstract (1.0.0)
-    actionmailer (3.0.7)
-      actionpack (= 3.0.7)
-      mail (~> 2.2.15)
-    actionpack (3.0.7)
-      activemodel (= 3.0.7)
-      activesupport (= 3.0.7)
+    actionmailer (3.0.9)
+      actionpack (= 3.0.9)
+      mail (~> 2.2.19)
+    actionpack (3.0.9)
+      activemodel (= 3.0.9)
+      activesupport (= 3.0.9)
       builder (~> 2.1.2)
       erubis (~> 2.6.6)
       i18n (~> 0.5.0)
@@ -120,33 +121,33 @@ GEM
       rack-mount (~> 0.6.14)
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
-    activemodel (3.0.7)
-      activesupport (= 3.0.7)
+    activemodel (3.0.9)
+      activesupport (= 3.0.9)
       builder (~> 2.1.2)
       i18n (~> 0.5.0)
-    activerecord (3.0.7)
-      activemodel (= 3.0.7)
-      activesupport (= 3.0.7)
-      arel (~> 2.0.2)
+    activerecord (3.0.9)
+      activemodel (= 3.0.9)
+      activesupport (= 3.0.9)
+      arel (~> 2.0.10)
       tzinfo (~> 0.3.23)
-    activeresource (3.0.7)
-      activemodel (= 3.0.7)
-      activesupport (= 3.0.7)
-    activesupport (3.0.7)
+    activeresource (3.0.9)
+      activemodel (= 3.0.9)
+      activesupport (= 3.0.9)
+    activesupport (3.0.9)
     acts-as-taggable-on (2.0.6)
     archive-tar-minitar (0.5.2)
-    arel (2.0.9)
+    arel (2.0.10)
     attribute_normalizer (0.3.1)
     aws-s3 (0.6.2)
       builder
       mime-types
       xml-simple
-    babosa (0.3.4)
+    babosa (0.3.5)
     bcrypt-ruby (2.1.4)
     best_in_place (0.1.9)
       rails (~> 3.0.0)
     builder (2.1.2)
-    cancan (1.6.4)
+    cancan (1.6.5)
     capistrano (2.5.21)
       highline
       net-scp (>= 1.0.0)
@@ -163,9 +164,9 @@ GEM
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.3)
     celerity (0.8.9)
-    cells (3.5.6)
-      actionpack (~> 3.0.0)
-      railties (~> 3.0.0)
+    cells (3.6.2)
+      actionpack (~> 3.0)
+      railties (~> 3.0)
     childprocess (0.1.8)
       ffi (~> 1.0.6)
     columnize (0.3.2)
@@ -196,7 +197,7 @@ GEM
       babosa (~> 0.3.0)
     gherkin (2.3.5)
       json (>= 1.4.6)
-    haml (3.0.25)
+    haml (3.1.2)
     highline (1.6.1)
     i18n (0.5.0)
     json (1.5.1)
@@ -226,25 +227,27 @@ GEM
     nokogiri (1.4.4)
     orm_adapter (0.0.5)
     polyglot (0.3.1)
-    rack (1.2.2)
+    rack (1.2.3)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
-    rails (3.0.7)
-      actionmailer (= 3.0.7)
-      actionpack (= 3.0.7)
-      activerecord (= 3.0.7)
-      activeresource (= 3.0.7)
-      activesupport (= 3.0.7)
+    rails (3.0.9)
+      actionmailer (= 3.0.9)
+      actionpack (= 3.0.9)
+      activerecord (= 3.0.9)
+      activeresource (= 3.0.9)
+      activesupport (= 3.0.9)
       bundler (~> 1.0)
-      railties (= 3.0.7)
-    railties (3.0.7)
-      actionpack (= 3.0.7)
-      activesupport (= 3.0.7)
+      railties (= 3.0.9)
+    railties (3.0.9)
+      actionpack (= 3.0.9)
+      activesupport (= 3.0.9)
       rake (>= 0.8.7)
+      rdoc (~> 3.4)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rdoc (3.6.1)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -276,18 +279,18 @@ GEM
       rubyzip
     spork (0.8.4)
     sqlite3 (1.3.3)
-    stringex (1.2.1)
+    stringex (1.2.2)
     term-ansicolor (1.0.5)
     thor (0.14.6)
-    timeliness (0.3.3)
+    timeliness (0.3.4)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.27)
+    tzinfo (0.3.28)
     validates_timeliness (3.0.6)
       timeliness (~> 0.3.3)
     warden (1.0.4)
       rack (>= 1.0)
-    xml-simple (1.0.15)
+    xml-simple (1.1.0)
     xpath (0.1.3)
       nokogiri (~> 1.3)
 
@@ -309,7 +312,7 @@ DEPENDENCIES
   k3cms_trivial_authorization!
   launchy
   mysql2
-  rails (~> 3.0.7)
+  rails (~> 3.0.9)
   rspec-rails
   ruby-debug19
   spork

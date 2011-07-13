@@ -26,7 +26,7 @@ k3cms_gems.each do |gem_name|
   end
 end
 
-gem 'rails', '~> 3.0.7'
+gem 'rails', '~> 3.0.9'
 gem 'devise' unless find_gem('devise')
 gem 'ruby-debug19'
 

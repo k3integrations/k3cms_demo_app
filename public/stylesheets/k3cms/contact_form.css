@@ -18,6 +18,16 @@
   display: none;
 }
 
+.k3cms_contact_form_contact_form a.with_icon {
+  position: relative;
+  margin-left: 20px;
+}
+.k3cms_contact_form_contact_form a.with_icon img {
+  position: absolute;
+  top: 0px;
+  left: -20px;
+}
+
 /*================================================================================================*/
 /* .context_ribbon */
 
@@ -70,11 +80,10 @@
   position: relative;
   float: left;
   clear: left;
-  padding: 10px 18px 0;
   background-color: white;
   /* This is just an invisible placeholder border to keep dimensions uniform. The width here should match that of .k3cms_contact_form_contact_form.new_record */
   border: 5px solid transparent;
-  width: 600px;
+  width: 550px;
 }
 
 .k3cms_contact_form_contact_form.show.new_record {
@@ -101,7 +110,7 @@
   padding-left: 10px;
 }
 
-.k3cms_contact_form_contact_form.show {
+.edit_mode_on .k3cms_contact_form_contact_form.show {
      -moz-box-shadow: 0 0 12px #ddd;
   -webkit-box-shadow: 0 0 12px #ddd;
           box-shadow: 0 0 12px #ddd;
