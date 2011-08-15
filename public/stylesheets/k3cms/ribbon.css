@@ -4,7 +4,8 @@
 .auto_clear:after { content: "."; display: block; line-height: 0; height: 0; clear: both; visibility: hidden; }
 
 body {
-  margin-top: 0;
+  /* So that the ribbon aligns to the top of the viewport and there is no ugly gap */
+  margin-top: 0 !important;
 }
 
 .hidden {
@@ -395,6 +396,9 @@ ul, li {
 
 .context_ribbon .left + .left {
   margin-left: 10px;
+}
+.context_ribbon .field label.left + .left {
+  margin-left: 5px;
 }
 
 .context_ribbon input {
