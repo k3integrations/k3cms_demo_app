@@ -360,10 +360,12 @@ a img {
 }
 
 .clear {
-  visibility: hidden;
   clear: both;
 }
 
+.invisible {
+  visibility: hidden;
+}
 .hide {
   display: none;
 }
