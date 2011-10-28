@@ -6,6 +6,7 @@ k3cms_gems = %w[
   k3cms_s3_podcast
   k3cms_trivial_authorization
   k3cms_contact_form
+  k3cms_image_mapper
 ]
 
 if File.exists?("Gemfile.local")
@@ -26,7 +27,8 @@ k3cms_gems.each do |gem_name|
   end
 end
 
-gem 'rails', '~> 3.0.9'
+gem 'rails', '~> 3.0.10'
+gem 'cells', '3.6.7'
 gem 'devise' unless find_gem('devise')
 gem 'ruby-debug19'
 
