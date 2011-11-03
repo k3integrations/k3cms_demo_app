@@ -1,0 +1,30 @@
+/* vim: expandtab shiftwidth=2 tabstop=2
+*/
+/*================================================================================================*/
+/* Not k3cms_image_mapper-specific */
+
+
+/*================================================================================================*/
+/* general styles for k3cms_image_mapper gem */
+
+.k3cms_image_mapper {
+}
+
+.imagemap_target {
+  outline-width: 2px;
+  outline-color: #009000; /* green */
+     -moz-box-shadow: 0 0 12px #00C000;
+  -webkit-box-shadow: 0 0 12px #00C000;
+          box-shadow: 0 0 12px #00C000;
+}
+
+/*================================================================================================*/
+/* Icons */
+ li.icon.button.k3cms_image_mapper a {
+  background: url(/images/k3cms/image_mapper/icons.png) no-repeat;
+}
+
+li.icon.button.k3cms_image_mapper.image_mapper a { background-position: 0 -24px;}
+li.icon.button.k3cms_image_mapper.b2 a           { background-position: 0 -48px;}
+
+/*================================================================================================*/

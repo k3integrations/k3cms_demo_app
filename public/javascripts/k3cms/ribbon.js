@@ -100,6 +100,14 @@ K3cms = {
 //--------------------------------------------------------------------------------------------------
 // Data structures
 
+// A Ribbon has multiple Tabs
+// A Tab has multiple Sections
+// A section has many Buttons
+//
+// To retrieve a ribbon, get it from the element itself, like this: $('#k3cms_ribbon').k3cms_ribbon('get')
+// To retrieve a specific tab, get it through the ribbon API:       $('#k3cms_ribbon').k3cms_ribbon('get').tabsByName().editing_tab
+// This API could probably be improved. (I like the jQuery Tools API best of all I've seen, and hope to use that as the basis when I rework the API...)
+//
 K3cms_Ribbon = Class.extend({
   init: function(options) {
     this.tabs = [];
@@ -134,6 +142,10 @@ K3cms_Ribbon = Class.extend({
 });
 
 $.extend(K3cms_Ribbon, {
+  edit_mode_on: function() {
+    return !!document.cookie.match(/edit_mode=true/)
+  },
+
   bindEventHandlers: function(element, options) {
     $.each(options, function(key, value) {
       if (key.match(/^on/)) {
@@ -265,6 +277,31 @@ K3cms_Ribbon.Drawer = Class.extend({
     this.id = id;
     $.extend(this, options);
   },
+
+  open: function() {
+    this.get().data('focused', window.document.activeElement);
+    this.get().data('selected', new InlineEditor.Selection(window.document));
+    // console.debug('focus:', this.get().data('focused').node)
+    // console.debug('selected:', this.get().data('selected').anchorNode, ',', this.get().data('selected').anchorOffset, '-', this.get().data('selected').focusNode, ',', this.get().data('selected').focusOffset);
+    this.get().trigger('open');
+    this.get().slideToggle();
+    this.get().find(':input:visible:eq(0)').focus()
+  },
+  close: function() {
+    if (this.get().data('focused'))  this.get().data('focused').focus();
+    if (this.get().data('selected')) this.get().data('selected').restore();
+    this.get().trigger('close');
+    this.get().slideToggle();
+  },
+  toggle: function() {
+    var opening = !this.get().is(':visible');
+    if (opening) {
+      this.open();
+    } else {
+      this.close();
+    }
+  },
+
   render: function() {
     var self = this;
     var root = $('<div/>', { id: this.id, 'class': 'drawer hidden ' + this.id });
@@ -313,8 +350,8 @@ K3cms_Ribbon.Drawer = Class.extend({
     this.default_populate_with_defaults();
   },
   get: function() {
-    //return $('#k3cms_drawers .' + this.id + '.drawer');
-    return $('#k3cms_drawers #' + this.id);
+    return $('.' + this.id + '.drawer');
+    //return $('#k3cms_drawers #' + this.id);
   },
   find: function(selector) {
     return this.get().find(selector);
@@ -324,6 +361,14 @@ K3cms_Ribbon.Drawer = Class.extend({
   },
 
 });
+
+function entityEscape(text) {
+  return $('<div/>').text(text).html();
+}
+
+function toggleDrawer(id) {
+  $('.' + id + '.drawer').data('drawer').toggle();
+}
 
 //--------------------------------------------------------------------------------------------------
 // jQuery
@@ -434,3 +479,6 @@ K3cms_Ribbon.Drawer = Class.extend({
   }
     
 })(jQuery);
+
+
+//==================================================================================================

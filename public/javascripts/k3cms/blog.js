@@ -9,7 +9,5 @@ k3cms_blog_blog_post = {
     $('title').html(object.title)
     $('meta[name=description]').attr('content', object.meta_description);
     $('meta[name=keywords]').   attr('content', object.meta_keywords);
-
-    K3cms_Ribbon.set_saved_status(new Date(object.updated_at));
   }
 }

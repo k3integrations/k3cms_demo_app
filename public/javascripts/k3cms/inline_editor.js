@@ -16,10 +16,10 @@ toolbar_options = [
   ['Align Left',       'align_left',     false, 'execCommand', 'queryCommandState', 'queryCommandEnabled', ['justifyLeft']],
   ['Align Center',     'align_center',   false, 'execCommand', 'queryCommandState', 'queryCommandEnabled', ['justifyCenter']],
   ['Align Right',      'align_right',    false, 'execCommand', 'queryCommandState', 'queryCommandEnabled', ['justifyRight']],
-  ['Insert/edit link', 'link',           true,  function(){toggleDrawer('link_drawer')},  false, false],
+  ['Insert/edit link', 'link togglable', true,  function(){toggleDrawer('link_drawer')},  false, false],
   ['Remove link',      'unlink',         true,  'execCommand', 'queryCommandState', 'queryCommandEnabled', ['unlink']],
-  ['Insert/edit Image', 'image',         false, function(){toggleDrawer('image_drawer')}, false, false],
-  ['Insert/edit Video', 'video',         false, function(){toggleDrawer('video_drawer')}, false, InlineEditor.isFocusedEditor],
+  ['Insert/edit Image', 'image togglable',false,function(){toggleDrawer('image_drawer')}, false, false],
+  ['Insert/edit Video', 'video togglable',false,function(){toggleDrawer('video_drawer')}, false, InlineEditor.isFocusedEditor],
   // ['P',             'blockParagraph', false, 'execCommand', 'queryCommandState', 'queryCommandEnabled', ['insertParagraph']],
   // ['P',             'blockParagraph', false, 'execCommand', 'queryCommandValue', 'queryCommandEnabled', ['formatBlock', 'p']],
   // ['Pre',           'blockPre',       false, 'execCommand', 'queryCommandValue', 'queryCommandEnabled', ['formatBlock', 'pre']],
@@ -91,7 +91,7 @@ var drawers = [
       // TODO: push this into core as InlineEditor.Selection.getFirstIntersecting('a') or some such?
       var editor = InlineEditor.focusedEditor();
       if (! editor) return null;
-      var rng = InlineEditor.Range.getCurrent();
+      var rng = InlineEditor.Selection.getCurrent();
       var anchors = $(editor.node).find('a').filter(function () {
         return InlineEditor.Selection.intersectsNode(this);
       });
@@ -102,7 +102,7 @@ var drawers = [
       return null;
     },
     populate_with_defaults: function() {
-      var rng = InlineEditor.Range.getCurrent();
+      var rng = InlineEditor.Selection.getCurrent();
       // Consider using the selected text, if it looks like it could be a URL
       if (rng.range.startContainer.nodeName == '#text') {
         var val = rng.range.startContainer.nodeValue;
@@ -146,15 +146,7 @@ var drawers = [
         append(K3cms_Ribbon.Drawer.FloatField.fields.clone())
     ),
     get_editable: function() {
-      // TODO: push this into core as InlineEditor.Selection.getOnlyContained('img') or some such?
-      var editor = InlineEditor.focusedEditor();
-      if (! editor) return null;
-      var rng = InlineEditor.Range.getCurrent();
-      //console.log("window.document.activeElement=", window.document.activeElement);
-      var images = $(editor.node).find('img').filter(function () {
-        return rng.approxEquals(new InlineEditor.Range(this));
-      });
-      return images.length > 0 ? images.get(0) : null;
+      return InlineEditor.getOnlyContained('img');
     },
     populate_with_defaults: function() {
       this.default_populate_with_defaults();
@@ -338,6 +330,9 @@ K3cms_InlineEditor = {
         }
       })
     })
+    if (object.updated_at) {
+      K3cms_Ribbon.set_saved_status(new Date(object.updated_at));
+    }
   },
 
   showPurrMessage: function(message) {
@@ -359,6 +354,7 @@ K3cms_InlineEditor = {
   },  
 
   mainSaveHandler: function(data, msg, xhr, options) {
+    //console.log("mainSaveHandler");
     var object_identifier = {
       object:      options.object_name,
       'object-id': options.object_id,
@@ -383,7 +379,7 @@ K3cms_InlineEditor = {
 
       method(options.object_name, options['object-id'], options.object, options.element)
 
-      $('#last_saved_status').html('Saved seconds ago');
+      //$('#last_saved_status').html('Saved seconds ago');
     }
   },
 
@@ -447,6 +443,9 @@ K3cms_InlineEditor.initInlineEditor = function(options) {
     onChange: function(event) {
       K3cms_Ribbon.set_dirty_status(true);
     },
+    onBeforeSave: function(event) {
+      //console.log("onBeforeSave test");
+    },
 
     saveSuccess : function(event, data, msg, xhr) {
       var element_data = $(this).data();
@@ -477,10 +476,10 @@ K3cms_InlineEditor.initRibbon = function() {
       new K3cms_Ribbon.Section('insert',        {label: 'Insert', items: []}),
       new K3cms_Ribbon.Section('block_styles',  {label: 'Paragraph/block styles', items: []}),
     ],
-    onClick: function() {
-      InlineEditor.last_focused_element && InlineEditor.last_focused_element.focus();
-      InlineEditor.last_selection       && InlineEditor.last_selection.restore();
-    },
+    //onClick: function() {
+      //InlineEditor.restore_last_focused_element();
+      //InlineEditor.restore_last_selection();
+    //},
   })
 
   //------------------------------------------------------------------------------------------------
@@ -505,15 +504,18 @@ K3cms_InlineEditor.initRibbon = function() {
         },
         onInvoke: function() {
           var editor = InlineEditor.focusedEditor();
-          // ignore button presses if no editable area is selected (you can also use InlineEditor.isFocusedEditor())
-          if (! editor || ! editor.isEnabled() || $(this).hasClass('disabled')) {
+          if ($(this).hasClass('disabled')) {
             return false;
           }
 
-          // execute the command
+          // Execute the command
           if (typeof toolbar_option.editor_cmd == 'function') {
             toolbar_option.editor_cmd();
           } else {
+            // Ignore button presses if no editable area is selected (you can also use InlineEditor.isFocusedEditor())
+            if (! editor || ! editor.isEnabled()) {
+              return false;
+            }
             var arg = typeof toolbar_option.cmd_args[1] == 'function' ? toolbar_option.cmd_args[1]() : toolbar_option.cmd_args[1];
             editor[toolbar_option.editor_cmd](toolbar_option.cmd_args[0], arg);
           }
@@ -678,6 +680,7 @@ K3cms_InlineEditor.initRibbon = function() {
   // set initial toolbar button state, and set handlers to keep up to date
   refreshButtons();
   $('.editable').bind('cursor_move custom_focus', function (event) {
+    //console.log("calling refreshButtons");
     refreshButtons();
   });
   // $('.editable').find(InlineEditor.SUB_FOCUSABLE_SELECTOR).bind('custom_focus', function (event) {
@@ -706,7 +709,7 @@ K3cms_InlineEditor.initRibbon = function() {
 
     drawer.get().find('form').bind('submit', {drawer: drawer}, function(event) {
       var drawer = event.data.drawer;
-      toggleDrawer(drawer.id);
+      drawer.close();
       var editable = drawer.get_editable();
       if (editable) {
         drawer.onUpdate(editable);
@@ -744,47 +747,25 @@ function refreshButtons() {
   }
 }
 
-// TODO: Move out to drawer class
-function toggleDrawer(id) {
-  var drawer = $('.' + id + '.drawer');
-  var opening = !drawer.is(':visible');
-  if (opening) {
-    // Opening drawer
-    drawer.data('focused', this.document.activeElement);
-    drawer.data('selected', new InlineEditor.Selection(this.document));
-    // console.debug('focus:', drawer.data('focused').node)
-    // console.debug('selected:', drawer.data('selected').anchorNode, ',', drawer.data('selected').anchorOffset, '-', drawer.data('selected').focusNode, ',', drawer.data('selected').focusOffset);
-    drawer.trigger('open');
-  } else {
-    // Closing drawer
-    if (drawer.data('focused'))  drawer.data('focused').focus();
-    if (drawer.data('selected')) drawer.data('selected').restore();
-    drawer.trigger('close');
+//==================================================================================================
+jQuery(function() {
+  //console.log("inline_editor loaded. K3cms_Ribbon.edit_mode_on()=", K3cms_Ribbon.edit_mode_on());
+  if (K3cms_Ribbon.edit_mode_on()) {
+    K3cms_InlineEditor.initRibbon();
+    K3cms_InlineEditor.initInlineEditor();
   }
-  drawer.slideToggle();
-  if (opening) {
-    drawer.find(':input:visible:eq(0)').focus()
-  }
+});
 
-}
+// Note: If we ever need to register multiple beforeunload handlers, consider
+// checking out https://github.com/silkster/Clean-Page-Unload-jQuery-Plugin
+$(window).bind("beforeunload", function(event) {
+  var editor = InlineEditor.focusedEditor();
 
-function drawerContents(id, title, fieldsinfo, submittext) {
-  var fields = '';
-  for (var idx in fieldsinfo) {
-    fields += '<div class="field">' +
-      fieldsinfo[idx].label + ':' +
-      '<input type="text" size="' + (fieldsinfo[idx].size || 30) + '" id="' + id + '_' + fieldsinfo[idx].id + '" name="' + id + '[' + fieldsinfo[idx].id + ']">' +
-    '</div>'
+  // We can try to trigger saving, but to seems to have no effect. Even if you cancel and stay on page, it appears that this Ajax request doesn't even fire.
+  //editor.save();
+
+  //console.log("editor.hasUnsavedChanges()=", editor.hasUnsavedChanges());
+  if (editor && editor.hasUnsavedChanges()) {
+    return "You have unsaved changes";
   }
-  return '<div class="drawer hidden ' + id + '">' +
-    '<h2 id="' + id + '_title">' + entityEscape(title) + '</h2>' +
-    '<form id="' + id + '_form" class="form ' + id + '" accept-charset="UTF-8">' +
-      fields +
-      '<input type="submit" id="' + id + '_submit" value="' + (submittext || 'Submit') + '">&nbsp; ' +
-      '<a onclick="toggleDrawer(\'' + id + '\'); return false;" href="#">Cancel</a>' +
-    '</form>' +
-  '</div>';
-}
-function entityEscape(text) {
-  return $('<div/>').text(text).html();
-}
+});

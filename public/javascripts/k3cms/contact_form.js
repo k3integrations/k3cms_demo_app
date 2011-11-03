@@ -21,8 +21,6 @@ k3cms_contact_form_contact_form = {
     //$('[data-object=' + object_name + '][data-object-id=' + object_id + '][data-attribute=' + attr_name + ']')
 
     var container = $('.k3cms_contact_form_contact_form#' + object_id);
-
-    K3cms_Ribbon.set_saved_status(new Date(object.updated_at));
   },
 
   // Given a root element (jQuery object), it will extract the current state of the object from the DOM and return it as a JS object.

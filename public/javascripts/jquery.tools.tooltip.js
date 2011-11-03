@@ -89,12 +89,20 @@
     if (conf.relative) {
       var top = 0, left = 0;
 
-      // adjust Y		
+      // adjust Y
 			var pos = conf.position[0];
+      // Refer to http://flowplayer.org/tools/tooltip/index.html#positioning for position options
       // TODO: don't know how to adjust for container element's padding-top
       if (pos == 'top') 	  { top -= tip.outerHeight(); }
       if (pos == 'center') 	{ top += trigger.outerHeight() / 2 - tip.outerHeight() / 2; }
       if (pos == 'bottom') 	{ top += trigger.outerHeight(); }
+
+      // adjust X
+			var pos = conf.position[1];
+      // TODO: don't know how to adjust for container element's padding-left
+      if (pos == 'left') 	  { left -= tip.outerWidth(); }
+      if (pos == 'center') 	{ left += trigger.outerWidth() / 2 - tip.outerWidth() / 2; }
+      if (pos == 'right') 	{ left += trigger.outerWidth(); }
 
       // adjust by user-supplied offset
       top  += conf.offset[0];

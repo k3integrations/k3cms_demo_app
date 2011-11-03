@@ -1,0 +1,38 @@
+.imagemap_toolbox {
+  background: white;
+  position: absolute;
+  border: 1px solid #666;
+  padding: 5px;
+  width: 200px;
+  z-index: 1001;
+  top: 0px;
+}
+.imagemap_region_list input {
+  width: 100px;
+}
+.imagemap_region_list label {
+  font-weight: bold;
+  padding: 4px;
+  margin: 1px;
+}
+.imagemap_region_list .imagemap_region_attributes {
+  display: none;
+}
+.imagemap_region_list .imagemap_region {
+  padding: 3px;
+}
+
+/* Selected region attributes */
+.imagemap_region_list .imagemap_region.selected .imagemap_region_attributes {
+  padding-left: 15px;
+  display: block;
+}
+.imagemap_region_list .imagemap_region.selected {
+  border: solid 1px #000;
+  background-color: #FF9;
+}
+
+/* Imagemap tools */
+.imagemap_region_list img.imagemap_delete_region {
+  float: right;
+}

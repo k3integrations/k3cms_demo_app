@@ -34,8 +34,6 @@ k3cms_s3_podcast_podcast = {
     //$('[data-object=' + object_name + '][data-object-id=' + object_id + '][data-attribute=' + attr_name + ']')
 
     var container = $('.k3cms_s3_podcast_podcast#' + object_id);
-
-    K3cms_Ribbon.set_saved_status(new Date(object.updated_at));
   },
 
   // Given a root element (jQuery object), it will extract the current state of the object from the DOM and return it as a JS object.
@@ -104,8 +102,6 @@ k3cms_s3_podcast_episode = {
         container.find('.title').after($('<div>', {'class': 'status unpublished', text: 'Not yet published'}))
       }
     }
-
-    K3cms_Ribbon.set_saved_status(new Date(object.updated_at));
   },
 
   // Given a root element (jQuery object), it will extract the current state of the object from the DOM and return it as a JS object.
